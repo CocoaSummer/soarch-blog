@@ -1,4 +1,4 @@
-baseURL = "http://127.0.0.1:80/"
+baseURL = "https://blog.soarch.top"
 languageCode = "zh-Hans"
 defaultContentLanguage = "zh"
 enableRobotsTXT = true
