@@ -18,7 +18,7 @@ steps:
         from_secret: docker_username
       password:
         from_secret: docker_password
-      repo: registry.cn-hangzhou.aliyuncs.com/soarch/hugo
+      repo: registry.cn-hangzhou.aliyuncs.com/soarch/blog
       auto_tag: true
       registry: registry.cn-hangzhou.aliyuncs.com
       dockerfile: Dockerfile
@@ -34,7 +34,7 @@ steps:
         from_secret: ssh_username
       password:
         from_secret: ssh_password
-      target: /root/docker-compose/soarch-hugo/
+      target: /root/docker-compose/soarch-blog/
       source:
         - docker-compose.yml
       rm: true
@@ -62,9 +62,9 @@ steps:
         - DOCKER_USERNAME
         - DOCKER_PASSWORD
       script:
-        - cd /root/docker-compose/soarch-hugo/
+        - cd /root/docker-compose/soarch-blog/
         - echo $DOCKER_PASSWORD | docker login $REGISTRY_URL --username=$DOCKER_USERNAME --password-stdin
-        - docker pull $REGISTRY_URL/soarch/hugo:${DRONE_TAG}
+        - docker pull $REGISTRY_URL/soarch/blog:${DRONE_TAG}
         - docker-compose down
         - docker-compose up -d --build
 image_pull_secrets:

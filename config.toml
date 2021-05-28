@@ -1,37 +1,63 @@
 baseURL = "http://127.0.0.1:80/"
-languageCode = "en-us"
+languageCode = "zh-Hans"
 defaultContentLanguage = "zh"
-theme = "dream"
-title = "Soarch Zone"
 enableRobotsTXT = true
 hasCJKLanguage = true
+
+theme = "dream"
+title = "Soarch空间"
+# copyright = "Copyright@2021"
+
 
 [params]
 ### theme common
 author = "Summer Cocoa"
-description = "Soarch Zone"
-favicon = "img/favicon.ico"
-avatar = "https://oss.soarch.top/11622109954_.pic_hd.jpg"
+description = "Soarch空间"
+favicon = "/img/favicon.ico"
+avatar = "https://oss.soarch.top/avatar.jpg"
 
 ### dream theme
-headerTitle = "SummerCocoa的生活"
-motto = "颓废者 is moving～～～"
-email = "1098517478@qq.com"
+headerTitle = "二宝 & 阿右's Life"
+motto = "This man is moving slowly slowly slowly～～～"
+# github = "CocoaSummer"
 
-showSummaryCoverInPost = false
-hasTwitterEmbed = false
+## config
+enableSearch = true
 fixedNav = true
-# siteStartYear =
-shareInAside = false
-reversePostAndAside = true
-enableSearch = false
+hasTwitterEmbed = false
+reversePostAndAside = false
 rss = false
+shareInAside = false
+showSummaryCoverInPost = false
+siteStartYear = 2016
 
-# dark mode
-backgroundDark = "black"
+## style
+# defaultDark = true
+background = "#fff"
+backgroundImage = "https://oss.soarch.top/background.jpg"
+linkColor = "black"
+backgroundDark = "#333"
+backgroundImageDark = "https://oss.soarch.top/background-dark.jpg"
+darkLinkColor = "white"
 darkNav = true
 dark404 = true
 
 [params.advanced]
-customCSS = ["css/detail.css"]
+customCSS = ["css/custom.css"]
 customJS = []
+
+[params.experimental]
+jsDate = true
+jsDateFormat = "yyyy/MM/dd"
+
+
+### 搜索
+[outputs]
+home = ["HTML", "RSS", "JSON"]
+
+
+### md中内嵌html，必须设置
+[markup]
+[markup.goldmark]
+[markup.goldmark.renderer]
+unsafe = true
