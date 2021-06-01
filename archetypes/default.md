@@ -1,10 +1,9 @@
 ---
 title: "{{ replace .Name "-" " " | title }}"
-date: {{ .Date }}
-lastmod: {{ .Date }}
+date: {{ now.Format "2006-01-02 03:04 pm" }}
 draft: false
 categories:
- - 生活
+  - 生活
 tags:
   - 宠物
   - 美食
