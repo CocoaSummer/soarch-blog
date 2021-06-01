@@ -1,7 +1,7 @@
 ---
-title: "{{ replace .Name "-" " " | title }}"
-date: {{ .Date }}
-lastmod: {{ .Date }}
+title: "Test"
+date: 2021-06-01T14:58:41+08:00
+lastmod: 2021-06-01T14:58:41+08:00
 draft: false
 categories:
   - 生活
