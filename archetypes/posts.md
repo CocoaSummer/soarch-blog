@@ -3,6 +3,7 @@ title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
 lastmod: {{ .Date }}
 draft: false
+cover: /img/cover.jpg
 categories:
   - 生活
 tags:
