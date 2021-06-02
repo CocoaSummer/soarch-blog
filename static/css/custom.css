@@ -4,6 +4,11 @@
   display: none !important;
 }
 
+video {
+  max-width: 100%;
+  height: auto;
+}
+
 body.dark .os-viewport {
   background-color: rgba(0, 0, 0, 0.6);
 }
