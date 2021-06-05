@@ -8,7 +8,7 @@ theme = "dream"
 title = "Soarch空间"
 # copyright = "Copyright@2021"
 
-buildDrafts = true
+buildDrafts = false
 buildExpired = true
 buildFuture = true
 
@@ -45,7 +45,12 @@ darkLinkColor = "white"
 darkNav = true
 dark404 = true
 
-highlightjs = false
+### md语法高亮
+highlightjs = true
+highlightjsCDN = "https://cdn.bootcdn.net/ajax/libs/highlight.js/11.0.0-alpha1/highlight.min.js" # 国内镜像
+highlightjsExtraLanguages = ["ocaml"]
+highlightjsTheme = "gruvbox-light"
+highlightjsThemeDark = "gruvbox-dark"
 
 [params.advanced]
 customCSS = ["css/custom.css"]
@@ -66,10 +71,3 @@ home = ["HTML", "RSS", "JSON"]
 [markup.goldmark]
 [markup.goldmark.renderer]
 unsafe = true
-
-[frontmatter]
-date = ["date", "publishDate", "lastmod"]
-expiryDate = ["expiryDate"]
-lastmod = [":git", "lastmod", "date", "publishDate"]
-publishDate = ["publishDate", "date"]
-enableGitInfo = true
