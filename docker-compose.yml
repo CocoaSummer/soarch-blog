@@ -1,7 +1,7 @@
 version: '3'
 services:
   soarch_hugo:
-    image: registry.cn-hangzhou.aliyuncs.com/soarch/blog:1.0.21
+    image: registry.cn-hangzhou.aliyuncs.com/soarch/blog:1.0.22
     container_name: 'soarch-blog'
     ports:
       - '5003:80'
