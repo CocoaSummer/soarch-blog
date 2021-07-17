@@ -119,6 +119,10 @@ function toggleDark() {
   darkBack()
   darkFooter()
   darkSearch()
+
+  if (Array.isArray(window.darkFunctions)) {
+    darkFunctions.forEach((d) => d())
+  }
 }
 
 const setThemeForUtterances = () => {
@@ -153,7 +157,9 @@ if (isDark === 'y') {
   iconSwitchs.addClass('sun')
 }
 
-function themeSwitch() {
+function themeSwitch(e) {
+  e.preventDefault()
+
   if (isDark === 'y') {
     iconSwitchs.removeClass('moon')
     iconSwitchs.addClass('sun')

@@ -66,10 +66,13 @@
   # reversePostAndAside = true
   # shareInAside = true
   fixedNav = true
+  # collapsibleTags = true
+  # collapseBySummary = true
 
   [params.advanced]
     customCSS = ["css/custom.css"]
-    customJS = []
+    # customJSBefore = []
+    # customJS = []
 
   [params.experimental]
     jsDate = true
@@ -262,6 +265,14 @@ Display share buttons in aside, not under the post title.
 
 Make navbar fixed when scrolling.
 
+### collapsibleTags = true
+
+Make `/tags` page's tags collapsible.
+
+### collapseBySummary = true
+
+If your posts contain duplicate titles, you can use this param to continue grouping the titles. The lowest level will use `.Summary` to render.
+
 ## Advanced
 
 > Note: generally, the following advanced parameters are not necessary to be set. Their main purpose is to further customize the entire theme.
@@ -270,13 +281,15 @@ Make navbar fixed when scrolling.
 
 Add your custom CSS files after the theme CSS files.
 
-For example, create a folder named `css` under `static`, then add `custom.css` in it.
+For example, create a folder named `css` under `static`, then add `custom.css` into it.
+
+### customJSBefore = []
+
+Like `customCSS`, add your custom JS files **before** the theme JS files.
 
 ### customJS = []
 
-Add your custom JS files.
-
-Same as `customCSS`, except all custom JS files will be placed after the theme JS files.
+Like `customJSBefore`, add your custom JS files **after** the theme JS files.
 
 ## Experimental
 

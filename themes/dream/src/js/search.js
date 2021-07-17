@@ -1,6 +1,8 @@
 let searchVisible = false
 
-function toggleSearch() {
+function toggleSearch(e) {
+  e.preventDefault()
+
   if (searchVisible) {
     $('#dream-search').css('display', '')
   } else {
@@ -14,11 +16,11 @@ function toggleSearch() {
 $(document).ready(() => {
   $(document).on('keydown', (e) => {
     if (e.metaKey && e.key === '/' && !searchVisible) {
-      toggleSearch()
+      toggleSearch(e)
     }
 
     if (e.key === 'Escape' && searchVisible) {
-      toggleSearch()
+      toggleSearch(e)
     }
   })
 })
