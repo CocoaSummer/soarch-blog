@@ -32,6 +32,7 @@ reversePostAndAside = false
 rss = false
 shareInAside = false
 showSummaryCoverInPost = false
+collapsibleTags = true
 siteStartYear = 2016
 
 ## style
