@@ -14,8 +14,10 @@ video {
   display: none;
 }
 
-.markdown-body img {
-  max-width: 65%;
+@media only screen and (min-width: 1029px) {
+  .markdown-body img {
+    max-width: 65%;
+  }
 }
 
 /* 作者主题自带 */
