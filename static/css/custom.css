@@ -15,7 +15,8 @@ video {
 }
 
 @media only screen and (min-width: 1029px) {
-  .markdown-body img {
+  .markdown-body img,
+  video {
     max-width: 65%;
   }
 }
