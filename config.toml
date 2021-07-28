@@ -26,7 +26,7 @@ motto = "Life is moving slowly slowly slowly～～～"
 
 ## config
 enableSearch = true
-fixedNav = true
+fixedNav = false
 hasTwitterEmbed = false
 reversePostAndAside = false
 rss = false

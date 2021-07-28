@@ -1,15 +1,17 @@
-/* 自定义 */
-.dream-share,
-.dream-column:last-child,
-.dream-column:nth-last-child(2) {
+/* 隐藏社交链接 */
+.flip-it .dream-share,
+.flip-it .dream-column:last-child,
+.flip-it .dream-column:nth-last-child(2) {
   display: none !important;
 }
 
+/* 文章内的视频自适应 */
 video {
   max-width: 100%;
   height: auto;
 }
 
+/* 隐藏卡片上的作者名和阅读时间 */
 .ui.card.dream-card .extra {
   display: none;
 }
