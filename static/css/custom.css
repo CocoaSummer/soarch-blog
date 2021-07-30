@@ -1,5 +1,5 @@
-/* 隐藏社交链接 */
-.flip-it .dream-share,
+/* 隐藏社交链接和分享图标 */
+.dream-share,
 .flip-it .dream-column:last-child,
 .flip-it .dream-column:nth-last-child(2) {
   display: none !important;
