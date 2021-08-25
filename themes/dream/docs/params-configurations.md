@@ -36,6 +36,7 @@
   # valine = true
   # LEANCLOUD_APP_ID = ""
   # LEANCLOUD_APP_KEY = ""
+  # VALINE_LANGUAGE = ""
 
   email = "g1enyy0ung@gmail.com"
   twitter = "g1eny0ung"
@@ -199,17 +200,24 @@ View <https://utteranc.es> to get more details.
 
 Valine is a fast, simple & efficient Leancloud based no back end comment system.
 
-In order to make it work, you still need to set two parameters:
+In order to make it work, you still need to set first two parameters:
 
 ```toml
 [params]
   LEANCLOUD_APP_ID = ""
   LEANCLOUD_APP_KEY = ""
+  VALINE_LANGUAGE = ""
 ```
+
+Default language param is "zh-CN" , other supported languages are "zh-TW" , "en" , "ja" .
 
 View <https://valine.js.org/en/quickstart> to get more details.
 
 ### Social Links
+
+> Deprecated. **Now you can do the rendering of socials with a custom data file. This file must be named `socials.toml` and must contain the array named `socials`.**
+>
+> Example: <https://github.com/g1eny0ung/blog/blob/master/data/socials.toml>.
 
 `email = "g1enyy0ung@gmail.com"`<br />
 `twitter = "g1eny0ung"`<br />
@@ -221,7 +229,7 @@ View <https://valine.js.org/en/quickstart> to get more details.
 `stackoverflow = "5676489/g1eny0ung"`<br />
 `codepen = "g1eny0ung"`
 
-All of these social links will be showed on about page `layouts/partials/back.html` and header `layouts/partials/header.html`.
+All of these social links will be showed on about page `layouts/partials/back.html`.
 
 You can open an issue or pull a request to add a social link.
 
