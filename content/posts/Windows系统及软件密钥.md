@@ -1,7 +1,7 @@
 ---
 title: 'Windows系统及软件密钥'
 date: 2021-08-08T12:31:48+08:00
-lastmod: 2021-08-08T12:31:48+08:00
+lastmod: 2021-11-01T12:31:48+08:00
 draft: false
 cover: https://oss.soarch.top/pojieniyao.jpg
 categories:
@@ -48,6 +48,11 @@ tags:
 
 - 激活码 1: MP20-888-MP11-AAA5-BBBB
 - 激活码 1: MP20-345-DP56-7778-919A
+
+### Paragon Alignment Tool 3.0
+
+- Product Key: PSG-209-PEE-CB-10639873
+- Serial Number: 0981A-B8420-95FAB-7B08B
 
 ### Paragon Alignment Tool 4.0
 
