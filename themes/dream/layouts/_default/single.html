@@ -37,7 +37,7 @@
   </aside>
   {{ end }}
   <div class="sixteen wide mobile sixteen wide tablet ten wide computer column markdown-body dream-single" id="dream-save-post-as-img">
-    <section class="ui top attached segment">
+    <section class="ui segment">
       <header>
         <h1 class="ui large header">
           {{- .Title -}}
@@ -135,9 +135,9 @@
     <script>
       new Valine({
         el: '#vcomments',
-        appId: {{ .Site.Params.LEANCLOUD_APP_ID }},
-        appKey: {{ .Site.Params.LEANCLOUD_APP_KEY }},
-        lang: {{ .Site.Params.VALINE_LANGUAGE }}
+        appId: '{{ .Site.Params.LEANCLOUD_APP_ID }}',
+        appKey: '{{ .Site.Params.LEANCLOUD_APP_KEY }}',
+        lang: '{{ .Site.Params.VALINE_LANGUAGE }}'
       })
     </script>
     {{ end }}
@@ -148,8 +148,6 @@
 {{ define "js" }}
 
 {{ if .Site.Params.Experimental.jsDate }}
-<script src="https://cdn.jsdelivr.net/npm/luxon@1.26.0"></script>
-
 {{ partial "luxon.html" . }}
 {{ end }}
 
@@ -167,6 +165,6 @@
 {{ partial "highlight.html" . }}
 {{ end }}
 
-<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.1"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.1/dist/html2canvas.min.js" integrity="sha256-uacRffSSMP9qpvNWhVmYLykBv9YKMA1d/VSIN1AmfyQ=" crossorigin="anonymous"></script>
 <script src="{{ "/js/post.js" | relURL }}" defer></script>
 {{ end }}
