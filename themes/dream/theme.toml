@@ -3,19 +3,19 @@
 
 name = "Dream"
 license = "MIT"
-licenselink = "https://github.com/g1eny0ung/hugo-theme-dream/blob/master/LICENSE"
+licenselink = ""
 description = "A hugo theme named dream"
-homepage = "http://g1en.site/hugo-theme-dream"
+homepage = ""
 tags = ["flip", "masonry layout", "i18n", "blog", "google-analytics", "disqus", "responsive", "copyright", "avatar", "motto", "social links", "creative", "personal", "light mode", "dark mode", "search"]
 features = ["flip", "masonry layout", "i18n", "blog", "google-analytics", "disqus", "responsive", "copyright", "avatar", "motto", "social links", "creative", "personal", "light mode", "dark mode", "search"]
 min_version = "0.57.2"
 
 [author]
-  name = "Yue Yang"
-  homepage = "https://github.com/g1eny0ung"
+  name = ""
+  homepage = ""
 
 # If porting an existing theme
 [original]
-  name = "g1eny0ung's blog"
-  homepage = "https://g1en.site"
-  repo = "https://github.com/g1eny0ung/blog"
+  name = ""
+  homepage = ""
+  repo = ""

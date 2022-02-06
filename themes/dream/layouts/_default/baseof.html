@@ -30,7 +30,7 @@
               <p>© {{ now.Year }} {{ .Site.Title }}</p>
               {{ end }}
 
-              <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/g1eny0ung/hugo-theme-dream" target="_blank">Dream</a>.</p>
+              <!-- <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="#" target="_blank">Dream</a>.</p> -->
 
               {{ if .Site.Params.footerBottomText }}
               <p>{{ .Site.Params.footerBottomText | safeHTML }}</p>
@@ -46,8 +46,8 @@
       </div>
     </div>
 
-    <script src="/js/jquery@3.6.0.js"></script>
-    <script src="/js/semantic.min.js"></script>
+    <script src="https://oss.soarch.top/themes/js/jquery@3.6.0.js"></script>
+    <script src="https://oss.soarch.top/themes/js/semantic.min.js"></script>
 
     {{ if .Site.Params.enableSearch }}
     {{ partial "search.html" . }}
