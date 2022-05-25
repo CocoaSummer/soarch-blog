@@ -288,6 +288,8 @@ tags:
 
 ---
 
+# 图形配置
+
 ## 开机服务
 
 - 立即启动网络服务，并设置开机启动
@@ -458,10 +460,25 @@ tags:
   reboot
   ```
 
-## 进入桌面后，待完善
+---
+
+# 桌面配置
 
 - 启动后图标不显示
 
   ```sh
   gtk-update-icon-cache --force /usr/share/icons/hicolor
+  ```
+
+- 桌面显示中文
+
+  ```sh
+  nano ~/.xprofile
+  ```
+
+  填入内容
+
+  ```
+  export LANG=zh_CN.UTF-8
+  export LANGUAGE=zh_CN:en_US
   ```
