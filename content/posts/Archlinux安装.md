@@ -106,7 +106,9 @@ tags:
 
 ## 安装基本系统
 
-- 安装必需的软件包，nano 方便编辑配置文件
+- 安装必需的软件包
+
+  nano 方便编辑配置文件
 
   ```sh
   pacstrap /mnt base linux linux-firmware nano
@@ -150,11 +152,9 @@ tags:
   nano /etc/locale.gen
   ```
 
-  1. 找到目标行：Ctrl+W，输入 #en_US，回车，找到 UTF-8
-  2. 取消注释：删掉前面的#
-  3. 找到目标行：Ctrl+W，输入 #zh_CN，回车，找到 UTF-8
-  4. 取消注释：删掉前面的#
-  5. 保存：Ctrl+X，输入 Y，回车
+  1. 启用：Ctrl+W，输入 #en_US，回车，找到 UTF-8 那行，删掉前面的#
+  2. 启用：Ctrl+W，输入 #zh_CN，回车，找到 UTF-8 那行，删掉前面的#
+  3. 保存：Ctrl+X，输入 Y，回车
 
 - 生成 locale
 
@@ -219,7 +219,7 @@ tags:
 - 安装引导程序
 
   ```sh
-  pacman -S grub efibootmgr networkmanager network-manager-applet dialog os-prober mtools dosfstools ntfs-3g base-devel linux-headers reflector git sudo
+  pacman -S grub efibootmgr networkmanager network-manager-applet dialog os-prober mtools dosfstools ntfs-3g base-devel linux-headers reflector git sudo wget
   ```
 
 - 安装 WiFi 工具(可选)
@@ -248,9 +248,8 @@ tags:
   nano /etc/default/grub
   ```
 
-  1. 找到目标行：Ctrl+W，输入 #GRUB，回车，找到 GRUB_DISABLE_OS_PROBER=false
-  2. 取消注释：删掉前面的#
-  3. 保存：Ctrl+X，输入 Y，回车
+  1. 启用：Ctrl+W，输入 #GRUB，回车，找到 GRUB_DISABLE_OS_PROBER 那行，删掉前面的#
+  2. 保存：Ctrl+X，输入 Y，回车
 
 - 安装 grub
 
@@ -286,3 +285,183 @@ tags:
   ```
 
   启动时拔出 u 盘
+
+---
+
+## 开机服务
+
+- 立即启动网络服务，并设置开机启动
+
+  ```sh
+  systemctl enable --now NetworkManager
+  ```
+
+## 用户和用户组
+
+- 创建普通用户
+
+  ```sh
+  useradd -m -G wheel soarch
+  ```
+
+- 为该用户创建密码
+
+  ```sh
+  passwd soarch
+  ```
+
+- 授权 nano 使用 visudo，必须使用 visudo 编辑该文件防止出错
+
+  ```sh
+  EDITOR=nano visudo
+  ```
+
+  1. 启用：Ctrl+W，输入 #%wheel，回车，找到 ALL=(ALL) ALL 那行，删掉前面的#
+  2. 保存：Ctrl+X，输入 Y，回车
+
+## 包管理
+
+- 按速度过滤包管理镜像源
+
+  ```sh
+  reflector -c China -a 6 --sort rate --save /etc/pacman.d/mirrorlist
+  ```
+
+- 修改 pacman.conf
+
+  ```sh
+  nano /etc/pacman.conf
+  ```
+
+  **新增 AUR 仓库**
+
+  在末尾处，填入内容
+
+  ```
+  [archlinuxcn]
+  Server = https://repo.archlinuxcn.org/$arch
+  ```
+
+  **启用 multilib 仓库**
+
+  1. 启用：Ctrl+W，输入 #[multilib，回车，找到 multilib 那行和下一行，删掉前面的#
+  2. 保存：Ctrl+X，输入 Y，回车
+
+  **启用多线程下载**
+
+  1. 启用：Ctrl+W，输入 #Xfer，回车，找到 wget 那行，删掉前面的#
+  2. 保存：Ctrl+X，输入 Y，回车
+
+- 同步镜像源
+
+  ```sh
+  pacman -Syu && pacman -S archlinuxcn-keyring
+  ```
+
+- 安装 AUR 助手
+
+  ```sh
+  pacman -S yay
+  ```
+
+## 图形用户界面
+
+- 安装图形服务器
+
+  ```sh
+  pacman -S xorg
+  ```
+
+- 安装显示管理器
+
+  ```sh
+  pacman -S lightdm
+  ```
+
+- 安装桌面环境
+
+  ```sh
+  pacman -S xfce4 xfce4-goodies
+  ```
+
+## 配置 NVIDIA 显卡
+
+- 安装驱动
+
+  我的显卡为 gtx760，其他 nvidia 驱动，参考[NVIDIA](<https://wiki.archlinux.org/title/NVIDIA_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)>)
+
+  ```sh
+  su soarch
+  yay -S nvidia-470xx-dkms
+  exit
+  ```
+
+  检查驱动安装正常
+
+  ```sh
+  nvidia-smi
+  ```
+
+  自动配置
+
+  ```sh
+  nvidia-xconfig
+  ```
+
+## 配置 lightdm
+
+- 安装 xrandr
+
+  ```sh
+  pacman -S xorg-xrandr
+  ```
+
+- 编辑 lightdm.conf
+
+  - 多显卡仅使用 nvidia 显卡，显示管理器需增加启动脚本 display-setup-script
+  - 启动太快导致显卡驱动未加载，需设置 logind-check-graphical=false
+
+  ```sh
+  nano /etc/lightdm/lightdm.conf
+  ```
+
+  1. 启用：Ctrl+W，输入 #logind，回车，找到 graphical 那行，删掉前面的#
+  2. 启用：Ctrl+W，输入 #display-setup，找到 script 那行，删掉前面的#
+  3. 修改：display-setup-script=/etc/lightdm/display_setup.sh
+  4. 保存：Ctrl+X，输入 Y，回车
+
+- 创建并写入 display_setup.sh
+
+  ```sh
+  #!/bin/bash
+  xrandr --setprovideroutputsource modesetting NVIDIA-0
+  xrandr --auto
+  ```
+
+- display_setup.sh 追加可执行权限
+
+  ```sh
+  chmod +x display_setup.sh
+  ```
+
+## 进入桌面前最后的步骤
+
+- 安装字体
+
+  ```sh
+  pacman -S noto-fonts-cjk ttf-dejavu 
+  ```
+
+- 重启
+
+  ```sh
+  reboot
+  ```
+
+## 进入桌面后，待完善
+
+- 启动后图标不显示
+
+  ```sh
+  gtk-update-icon-cache --force /usr/share/icons/hicolor
+  ```
