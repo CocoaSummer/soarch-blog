@@ -16,11 +16,11 @@ tags:
 
 ## 物理机必须条件
 
-1. BIOS 禁用 Secure Boot
-2. BIOS 设置硬盘模式 AHCI
-3. BIOS 启动模式 UEFI
-4. 硬盘分区表含有 ESP 分区(EFI)
-5. 硬盘删除分区，保持“空闲”状态
+- BIOS 禁用 Secure Boot
+- BIOS 设置硬盘模式 AHCI
+- BIOS 设置启动模式 UEFI
+- 硬盘分区表含有 ESP 分区(EFI)
+- 硬盘删除分区，保持“空闲”状态
 
 ## 检查互联网是否连接
 
@@ -152,8 +152,8 @@ tags:
   nano /etc/locale.gen
   ```
 
-  1. 启用：Ctrl+W，输入 #en_US，回车，找到 UTF-8 那行，删掉前面的#
-  2. 启用：Ctrl+W，输入 #zh_CN，回车，找到 UTF-8 那行，删掉前面的#
+  1. 启用英文：Ctrl+W，输入 #en_US，回车，找到 UTF-8 那行，删掉前面的#
+  2. 启用中文：Ctrl+W，输入 #zh_CN，回车，找到 UTF-8 那行，删掉前面的#
   3. 保存：Ctrl+X，输入 Y，回车
 
 - 生成 locale
@@ -195,6 +195,8 @@ tags:
   ```sh
   nano /etc/hosts
   ```
+
+  填入内容
 
   ```
   127.0.0.1     localhost
@@ -288,9 +290,9 @@ tags:
 
 ---
 
-# 图形配置
+## 图形配置
 
-## 开机服务
+### 开机服务
 
 - 立即启动网络服务，并设置开机启动
 
@@ -298,7 +300,7 @@ tags:
   systemctl enable --now NetworkManager
   ```
 
-## 用户和用户组
+### 用户和用户组
 
 - 创建普通用户
 
@@ -321,7 +323,7 @@ tags:
   1. 启用：Ctrl+W，输入 #%wheel，回车，找到 ALL=(ALL) ALL 那行，删掉前面的#
   2. 保存：Ctrl+X，输入 Y，回车
 
-## 包管理
+### 包管理
 
 - 按速度过滤包管理镜像源
 
@@ -335,24 +337,16 @@ tags:
   nano /etc/pacman.conf
   ```
 
-  **新增 AUR 仓库**
-
-  在末尾处，填入内容
+  新增 AUR 仓库：在末尾处，填入内容
 
   ```
   [archlinuxcn]
   Server = https://repo.archlinuxcn.org/$arch
   ```
 
-  **启用 multilib 仓库**
-
-  1. 启用：Ctrl+W，输入 #[multilib，回车，找到 multilib 那行和下一行，删掉前面的#
-  2. 保存：Ctrl+X，输入 Y，回车
-
-  **启用多线程下载**
-
-  1. 启用：Ctrl+W，输入 #Xfer，回车，找到 wget 那行，删掉前面的#
-  2. 保存：Ctrl+X，输入 Y，回车
+  1. 启用 multilib 仓库：Ctrl+W，输入 #[multilib，回车，找到 multilib 那行和下一行，删掉前面的#
+  1. 启用多线程下载：Ctrl+W，输入 #Xfer，回车，找到 wget 那行，删掉前面的#
+  1. 保存：Ctrl+X，输入 Y，回车
 
 - 同步镜像源
 
@@ -366,7 +360,7 @@ tags:
   pacman -S yay
   ```
 
-## 图形用户界面
+### 图形用户界面
 
 - 安装图形服务器
 
@@ -386,7 +380,7 @@ tags:
   pacman -S xfce4 xfce4-goodies
   ```
 
-## 配置 NVIDIA 显卡
+### 配置 NVIDIA 显卡
 
 - 安装驱动
 
@@ -398,19 +392,19 @@ tags:
   exit
   ```
 
-  检查驱动安装正常
+- 检查驱动安装正常
 
   ```sh
   nvidia-smi
   ```
 
-  自动配置
+- 自动配置
 
   ```sh
   nvidia-xconfig
   ```
 
-## 配置 lightdm
+### 配置 lightdm
 
 - 安装 xrandr
 
@@ -446,31 +440,24 @@ tags:
   chmod +x display_setup.sh
   ```
 
-## 进入桌面前最后的步骤
+## 桌面基础配置
 
-- 安装字体
-
-  ```sh
-  pacman -S noto-fonts-cjk ttf-dejavu 
-  ```
-
-- 重启
-
-  ```sh
-  reboot
-  ```
-
----
-
-# 桌面配置
-
-- 启动后图标不显示
+- 刷新图标缓存，以防首次进入桌面图标显示异常
 
   ```sh
   gtk-update-icon-cache --force /usr/share/icons/hicolor
   ```
 
-- 桌面显示中文
+- 安装字体
+
+  - noto-fonts-cjk 中文字体
+  - ttf-dejavu  编程字体
+
+  ```sh
+  pacman -S noto-fonts-cjk ttf-dejavu 
+  ```
+
+- 设置桌面显示中文
 
   ```sh
   nano ~/.xprofile
@@ -481,4 +468,36 @@ tags:
   ```
   export LANG=zh_CN.UTF-8
   export LANGUAGE=zh_CN:en_US
+  ```
+
+- 配置 ls 命令
+
+  ```sh
+  sudo nano .bashrc
+  ```
+
+  追加内容
+
+  ```
+  alias ll="ls -l"
+  alias la="ls -a"
+  alias lla="ls -al"
+  ```
+
+  立即生效
+
+  ```sh
+  source .bashrc
+  ```
+
+<!-- - 安装中文输入法
+- 配置中文输入法
+- 配置 ls
+- 调整 Windows 为第一引导顺序
+- 安装常用软件 -->
+
+- 重启
+
+  ```sh
+  reboot
   ```
