@@ -292,7 +292,7 @@ tags:
 
 ## 图形配置
 
-### 开机服务
+重启后，root 登录
 
 - 立即启动网络服务，并设置开机启动
 
@@ -325,7 +325,7 @@ tags:
   1. 启用 sudo：Ctrl+W，输入 #%wheel，回车，找到 ALL=(ALL) ALL 那行，删掉前面的#
   2. 保存：Ctrl+X，输入 Y，回车
 
-### 包管理
+### 软件包管理
 
 - 按下载速度生成镜像源
 
@@ -435,18 +435,32 @@ tags:
   pacman -S xorg-xrandr
   ```
 
-- 编辑 lightdm.conf
+- 安装 numlockx
 
-  - 多显卡仅使用 nvidia 显卡，显示管理器需增加启动脚本 display-setup-script
-  - 启动太快导致显卡驱动未加载，需设置 logind-check-graphical=false
+  ```sh
+  pacman -S numlockx
+  ```
+
+- 编辑 lightdm.conf
 
   ```sh
   nano /etc/lightdm/lightdm.conf
   ```
 
-  1. 启用：Ctrl+W，输入 #logind，回车，找到 graphical 那行，删掉前面的#
-  2. 启用：Ctrl+W，输入 #display-setup，找到 script 那行，删掉前面的#
-  3. 修改：display-setup-script=/etc/lightdm/display_setup.sh
+  1. 启动太快导致显卡驱动未加载，需设置 logind-check-graphical=false
+
+     - Ctrl+W，输入 #logind，回车，找到 graphical 那行，删掉前面的#
+
+  2. 多显卡仅使用 nvidia 显卡，显示管理器需增加启动脚本
+
+     - Ctrl+W，输入 #display-setup，找到 script 那行，删掉前面的#
+     - 修改：display-setup-script=/etc/lightdm/display_setup.sh
+
+  3. 登录界面开启 Num Lock
+
+     - Ctrl+W，输入 #greeter-setup，找到 script 那行，删掉前面的#
+     - 修改：greeter-setup-script=/usr/bin/numlockx on
+
   4. 保存：Ctrl+X，输入 Y，回车
 
 - 创建并写入 display_setup.sh
@@ -463,22 +477,39 @@ tags:
   chmod +x display_setup.sh
   ```
 
----
+### 进桌面前配置
 
-## 桌面配置
+- 刷新图标缓存，首次进入桌面图标可能显示异常
 
-### 本地化
+  ```sh
+  gtk-update-icon-cache --force /usr/share/icons/hicolor
+  ```
 
 - 安装字体
 
-  - noto-fonts-cjk 中文字体
+  - noto-fonts-cjk 中日韩字体
   - ttf-dejavu  编程字体
+  - adobe-source-han-sans-cn-fonts 中文字体
+  - adobe-source-han-serif-cn-fonts 中文字体
 
   ```sh
-  pacman -S noto-fonts-cjk ttf-dejavu 
+  pacman -S noto-fonts-cjk ttf-dejavu adobe-source-han-sans-cn-fonts adobe-source-han-serif-cn-fonts
   ```
 
-- 设置桌面环境显示中文
+- 登录普通用户，并进入用户目录
+
+  ```sh
+  su soarch
+  cd ~
+  ```
+
+- 生成用户目录，在$HOME 路径下执行
+
+  ```sh
+  LC_ALL=C xdg-user-dirs-update --force # 强制创建英语目录
+  ```
+
+- 创建并写入.xprofile
 
   ```sh
   nano ~/.xprofile
@@ -491,7 +522,96 @@ tags:
   export LANGUAGE=zh_CN:en_US
   ```
 
-- 设置显示管理器中文
+  保存：Ctrl+X，输入 Y，回车
+
+- 设置显示管理器中文 ???
+
+- 重启，进入桌面
+
+  ```sh
+  reboot
+  ```
+
+---
+
+## 进桌面后配置
+
+- 开启 Num Lock，下一次进入桌面时生效
+
+  1. 通过 设置 > 键盘 中的 启动时恢复数字按键状态 进行勾选，生成配置文件
+  2. 在~/.config/xfce4/xfconf/xfce-perchannel-xml/keyboards.xml 中确保以下值设定为 true
+
+     ```sh
+     nano ~/.config/xfce4/xfconf/xfce-perchannel-xml/keyboards.xml
+     ```
+
+     对应修改以下内容
+
+     ```xml
+     <property name="Numlock" type="bool" value="true"/>
+     <property name="RestoreNumlock" type="bool" value="true"/>
+     ```
+
+- 调整 Windows 为第一引导顺序
+
+  ```sh
+  sudo nano /etc/default/grub
+  ```
+
+  由于 Windows 索引为 2，修改以下内容
+
+  ```
+  GRUB_DEFAULT=2
+  ```
+
+  保存：Ctrl+X，输入 Y，回车
+
+  ```sh
+  sudo grub-mkconfig -o /boot/grub/grub.cfg
+  ```
+
+  重启后生效
+
+### 输入法
+
+- 安装输入法引擎
+
+  ```sh
+  yay -S fcitx5-im
+  ```
+
+- 配置输入法引擎
+
+  ```sh
+  sudo nano /etc/environment
+  ```
+
+  填入内容
+
+  ```
+  GTK_IM_MODULE=fcitx
+  QT_IM_MODULE=fcitx
+  XMODIFIERS=@im=fcitx
+  INPUT_METHOD=fcitx
+  SDL_IM_MODULE=fcitx
+  GLFW_IM_MODULE=ibus
+  ```
+
+  保存：Ctrl+X，输入 Y，回车
+
+- 安装小狼毫输入法
+
+  ```sh
+  yay -S fcitx5-rime
+  ```
+
+- 安装常用词库
+
+  ```sh
+  yay -S fcitx5-pinyin-zhwiki fcitx5-pinyin-sougou fcitx5-pinyin-zhwiki-rime fcitx5-pinyin-moegirl-rime
+  ```
+
+- 注销当前用户，重新登录即可生效
 
 ### 控制台优化
 
@@ -515,30 +635,42 @@ tags:
   source ~/.bashrc
   ```
 
-- 刷新图标缓存，以防首次进入桌面图标显示异常
+### 安装常用软件
 
-  ```sh
-  gtk-update-icon-cache --force /usr/share/icons/hicolor
-  ```
+```sh
+yay -S firefox firefox-i18n-zh-cn # 浏览器
+yay -S leafpad # 纯文本编辑器
+yay -S mlocate # 建立文件索引工具
+```
 
-- 显示管理器中文
-- 调整 Windows 为第一引导顺序
-- 开机时打开 Num Lock
-- 生成用户目录
-- 配置自动调节 CPU 频率
+- 禁止蜂鸣声
 - 配置声音
 - 配置 ssh
 - 远程显示分辨率无法填满
 - 双显示器配置
-- 安装中文输入法
-- 配置中文输入法
-- 安装常用软件
-- 建立文件索引和搜索
-- 固态硬盘配置
--
 
-- 重启
+<!-- - 调节 CPU 频率
 
-  ```sh
-  reboot
-  ```
+安装工具
+
+```sh
+pacman -S thermald i7z cpupower
+```
+
+开机启动 cpupower
+
+```sh
+systemctl enable cpupower.service
+```
+
+查看所有可用的模块
+
+```sh
+ls /usr/lib/modules/$(uname -r)/kernel/drivers/cpufreq/
+```
+
+加载合适的模块。一旦合适的 cpufreq 驱动模块被加载成功，就可以通过以下命令查询到 CPU 的信息
+
+```sh
+cpupower frequency-info
+``` -->
