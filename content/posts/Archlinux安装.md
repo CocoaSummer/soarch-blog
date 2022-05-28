@@ -314,21 +314,44 @@ tags:
   passwd soarch
   ```
 
-- 授权 nano 使用 visudo，必须使用 visudo 编辑该文件防止出错
+- 启用 sudo
+
+  授权 nano 使用 visudo，必须使用 visudo 编辑该文件防止出错
 
   ```sh
   EDITOR=nano visudo
   ```
 
-  1. 启用：Ctrl+W，输入 #%wheel，回车，找到 ALL=(ALL) ALL 那行，删掉前面的#
+  1. 启用 sudo：Ctrl+W，输入 #%wheel，回车，找到 ALL=(ALL) ALL 那行，删掉前面的#
   2. 保存：Ctrl+X，输入 Y，回车
 
 ### 包管理
 
-- 按速度过滤包管理镜像源
+- 按下载速度生成镜像源
 
   ```sh
   reflector -c China -a 6 --sort rate --save /etc/pacman.d/mirrorlist
+  ```
+
+- 修改 reflector.conf
+
+  ```sh
+  nano /etc/xdg/reflector/reflector.conf
+  ```
+
+  找到对应行，修改以下内容
+
+  ```
+  --country China
+  --sort rate
+  ```
+
+  保存：Ctrl+X，输入 Y，回车
+
+- reflector 设置开机启动
+
+  ```sh
+  systemctl enable reflector
   ```
 
 - 修改 pacman.conf
@@ -345,8 +368,8 @@ tags:
   ```
 
   1. 启用 multilib 仓库：Ctrl+W，输入 #[multilib，回车，找到 multilib 那行和下一行，删掉前面的#
-  1. 启用多线程下载：Ctrl+W，输入 #Xfer，回车，找到 wget 那行，删掉前面的#
-  1. 保存：Ctrl+X，输入 Y，回车
+  2. 启用多线程下载：Ctrl+W，输入 #Xfer，回车，找到 wget 那行，删掉前面的#
+  3. 保存：Ctrl+X，输入 Y，回车
 
 - 同步镜像源
 
@@ -360,7 +383,7 @@ tags:
   pacman -S yay
   ```
 
-### 图形用户界面
+### 安装图形界面依赖
 
 - 安装图形服务器
 
@@ -440,13 +463,11 @@ tags:
   chmod +x display_setup.sh
   ```
 
-## 桌面基础配置
+---
 
-- 刷新图标缓存，以防首次进入桌面图标显示异常
+## 桌面配置
 
-  ```sh
-  gtk-update-icon-cache --force /usr/share/icons/hicolor
-  ```
+### 本地化
 
 - 安装字体
 
@@ -457,7 +478,7 @@ tags:
   pacman -S noto-fonts-cjk ttf-dejavu 
   ```
 
-- 设置桌面显示中文
+- 设置桌面环境显示中文
 
   ```sh
   nano ~/.xprofile
@@ -470,10 +491,14 @@ tags:
   export LANGUAGE=zh_CN:en_US
   ```
 
+- 设置显示管理器中文
+
+### 控制台优化
+
 - 配置 ls 命令
 
   ```sh
-  sudo nano .bashrc
+  sudo nano ~/.bashrc
   ```
 
   追加内容
@@ -487,14 +512,30 @@ tags:
   立即生效
 
   ```sh
-  source .bashrc
+  source ~/.bashrc
   ```
 
-<!-- - 安装中文输入法
-- 配置中文输入法
-- 配置 ls
+- 刷新图标缓存，以防首次进入桌面图标显示异常
+
+  ```sh
+  gtk-update-icon-cache --force /usr/share/icons/hicolor
+  ```
+
+- 显示管理器中文
 - 调整 Windows 为第一引导顺序
-- 安装常用软件 -->
+- 开机时打开 Num Lock
+- 生成用户目录
+- 配置自动调节 CPU 频率
+- 配置声音
+- 配置 ssh
+- 远程显示分辨率无法填满
+- 双显示器配置
+- 安装中文输入法
+- 配置中文输入法
+- 安装常用软件
+- 建立文件索引和搜索
+- 固态硬盘配置
+-
 
 - 重启
 
