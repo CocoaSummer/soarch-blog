@@ -3,7 +3,7 @@ title: 'Archlinux安装'
 date: 2022-05-25T12:31:48+08:00
 lastmod: 2022-05-25T12:31:48+08:00
 draft: false
-# cover: /img/cover.jpg
+cover: https://oss.soarch.top/archlinux.jpg
 categories:
   - 杂记
 tags:
@@ -132,7 +132,9 @@ tags:
   arch-chroot /mnt
   ```
 
-## 基础配置
+## 基本系统配置
+
+### 同步时间
 
 - 设置时区
 
@@ -146,7 +148,9 @@ tags:
   hwclock --systohc
   ```
 
-- 本地化
+### 本地化
+
+- 编辑 locale.gen 文件
 
   ```sh
   nano /etc/locale.gen
@@ -175,6 +179,8 @@ tags:
   ```
 
   保存：Ctrl+X，输入 Y，回车
+
+### 设置主机名
 
 - 创建并写入 hostname
 
@@ -211,6 +217,8 @@ tags:
   ```sh
   cat /etc/hosts
   ```
+
+### 其他配置
 
 - 设置 Root 密码
 
@@ -290,9 +298,9 @@ tags:
 
 ---
 
-## 图形配置
+## 图形界面配置
 
-重启后，root 登录
+重启后，使用 root 用户登录
 
 - 立即启动网络服务，并设置开机启动
 
@@ -421,7 +429,7 @@ tags:
   nvidia-smi
   ```
 
-- 自动配置
+- 生成配置
 
   ```sh
   nvidia-xconfig
@@ -477,12 +485,19 @@ tags:
   chmod +x display_setup.sh
   ```
 
-### 进桌面前配置
+## 进桌面前配置
 
 - 刷新图标缓存，首次进入桌面图标可能显示异常
 
   ```sh
   gtk-update-icon-cache --force /usr/share/icons/hicolor
+  ```
+
+- 禁用蜂鸣器
+
+  ```sh
+  rmmod pcspkr # 卸载蜂鸣器模块
+  echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf # 加入黑名单，阻止udev加载，重启后生效
   ```
 
 - 安装字体
@@ -494,6 +509,12 @@ tags:
 
   ```sh
   pacman -S noto-fonts-cjk ttf-dejavu adobe-source-han-sans-cn-fonts adobe-source-han-serif-cn-fonts
+  ```
+
+- 启用回收站
+
+  ```sh
+  pacman -S gvfs
   ```
 
 - 登录普通用户，并进入用户目录
@@ -536,23 +557,27 @@ tags:
 
 ## 进桌面后配置
 
-- 开启 Num Lock，下一次进入桌面时生效
+### 开启 Num Lock
 
-  1. 通过 设置 > 键盘 中的 启动时恢复数字按键状态 进行勾选，生成配置文件
-  2. 在~/.config/xfce4/xfconf/xfce-perchannel-xml/keyboards.xml 中确保以下值设定为 true
+1. 通过 设置 > 键盘 中的 启动时恢复数字按键状态 进行勾选，生成配置文件
+2. 在~/.config/xfce4/xfconf/xfce-perchannel-xml/keyboards.xml 中确保以下值设定为 true
 
-     ```sh
-     nano ~/.config/xfce4/xfconf/xfce-perchannel-xml/keyboards.xml
-     ```
+   ```sh
+   nano ~/.config/xfce4/xfconf/xfce-perchannel-xml/keyboards.xml
+   ```
 
-     对应修改以下内容
+   对应修改以下内容
 
-     ```xml
-     <property name="Numlock" type="bool" value="true"/>
-     <property name="RestoreNumlock" type="bool" value="true"/>
-     ```
+   ```xml
+   <property name="Numlock" type="bool" value="true"/>
+   <property name="RestoreNumlock" type="bool" value="true"/>
+   ```
 
-- 调整 Windows 为第一引导顺序
+   下一次进入桌面时生效
+
+### 调整 Windows 为第一引导顺序
+
+- 编辑 grub 文件
 
   ```sh
   sudo nano /etc/default/grub
@@ -565,6 +590,8 @@ tags:
   ```
 
   保存：Ctrl+X，输入 Y，回车
+
+- 重新生成引导列表
 
   ```sh
   sudo grub-mkconfig -o /boot/grub/grub.cfg
@@ -605,7 +632,7 @@ tags:
   yay -S fcitx5-rime
   ```
 
-- 安装常用词库
+- 安装常用中文词库
 
   ```sh
   yay -S fcitx5-pinyin-zhwiki fcitx5-pinyin-sougou fcitx5-pinyin-zhwiki-rime fcitx5-pinyin-moegirl-rime
@@ -635,19 +662,24 @@ tags:
   source ~/.bashrc
   ```
 
-### 安装常用软件
+## 安装常用软件
 
 ```sh
-yay -S firefox firefox-i18n-zh-cn # 浏览器
+yay -S firefox firefox-i18n-zh-cn # 火狐浏览器
+yay -S google-chrome # 谷歌浏览器
 yay -S leafpad # 纯文本编辑器
 yay -S mlocate # 建立文件索引工具
+yay -S github-cli # github授权工具
+yay -S vlc # vlc视频播放器
+yay -S visual-studio-code-bin # vscode高级编辑器
+
 ```
 
-- 禁止蜂鸣声
-- 配置声音
+- 配置扬声器
+- 配置麦克风
+- 配置摄像头
+
 - 配置 ssh
-- 远程显示分辨率无法填满
-- 双显示器配置
 
 <!-- - 调节 CPU 频率
 
