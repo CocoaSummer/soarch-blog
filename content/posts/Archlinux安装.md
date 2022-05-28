@@ -672,14 +672,19 @@ yay -S mlocate # 建立文件索引工具
 yay -S github-cli # github授权工具
 yay -S vlc # vlc视频播放器
 yay -S visual-studio-code-bin # vscode高级编辑器
-
+yay -S unzip # 解压zip工具
+yay -S cherrytree # 笔记工具
+yay -S anydesk-bin # 远程工具
+yay -S todesk-bin # 远程工具
+yay -S wps-office wps-office-mui-zh-cn ttf-wps-fonts # WPS 办公工具
+yay -S dropbox # 同步盘
 ```
 
 - 配置扬声器
 - 配置麦克风
 - 配置摄像头
 
-- 配置 ssh
+- 配置任务栏硬件监控 参考虚拟机
 
 <!-- - 调节 CPU 频率
 
