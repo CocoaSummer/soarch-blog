@@ -106,7 +106,7 @@ tags:
 
 ## 安装基本系统
 
-- 安装必需的软件包
+- 安装 linux 内核和固件，以及纯文本编辑器
 
   nano 方便编辑配置文件
 
@@ -226,7 +226,7 @@ tags:
   passwd
   ```
 
-- 安装引导程序
+- 安装生成引导的工具
 
   ```sh
   pacman -S grub efibootmgr networkmanager network-manager-applet dialog os-prober mtools dosfstools ntfs-3g base-devel linux-headers reflector git sudo wget
@@ -485,6 +485,27 @@ tags:
   chmod +x display_setup.sh
   ```
 
+- 设置开机启动
+
+  ```sh
+  systemctl enable lightdm
+  ```
+
+- 设置中文
+
+  ```sh
+  nano /usr/lib/systemd/system/lightdm.service
+  ```
+
+  追加以下内容
+
+  ```
+  [Service]
+  Environment=LANG=zh_CN.UTF-8
+  ```
+
+  保存：Ctrl+X，输入 Y，回车
+
 ## 进桌面前配置
 
 - 刷新图标缓存，首次进入桌面图标可能显示异常
@@ -544,8 +565,6 @@ tags:
   ```
 
   保存：Ctrl+X，输入 Y，回车
-
-- 设置显示管理器中文 ???
 
 - 重启，进入桌面
 
