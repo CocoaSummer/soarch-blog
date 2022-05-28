@@ -664,27 +664,36 @@ tags:
 
 ## 安装常用软件
 
-```sh
-yay -S firefox firefox-i18n-zh-cn # 火狐浏览器
-yay -S google-chrome # 谷歌浏览器
-yay -S leafpad # 纯文本编辑器
-yay -S mlocate # 建立文件索引工具
-yay -S github-cli # github授权工具
-yay -S vlc # vlc视频播放器
-yay -S visual-studio-code-bin # vscode高级编辑器
-yay -S unzip # 解压zip工具
-yay -S cherrytree # 笔记工具
-yay -S anydesk-bin # 远程工具
-yay -S todesk-bin # 远程工具
-yay -S wps-office wps-office-mui-zh-cn ttf-wps-fonts # WPS 办公工具
-yay -S dropbox # 同步盘
-```
+- 安装软件
 
-- 配置扬声器
+  ```sh
+  yay -S firefox firefox-i18n-zh-cn # 火狐浏览器
+  yay -S google-chrome # 谷歌浏览器
+  yay -S leafpad # 纯文本编辑器
+  yay -S mlocate # 建立文件索引工具
+  yay -S github-cli # github授权工具
+  yay -S vlc # vlc视频播放器
+  yay -S visual-studio-code-bin # vscode高级编辑器
+  yay -S unzip # 解压zip工具
+  yay -S cherrytree # 笔记工具
+  yay -S anydesk-bin # 远程工具
+  yay -S todesk-bin # 远程工具
+  yay -S wps-office wps-office-mui-zh-cn ttf-wps-fonts # WPS 办公工具
+  yay -S dropbox # 同步盘
+  yay -S multiload-ng-common xfce4-multiload-ng-plugin # 任务栏硬件监控工具
+  yay -S hugo # markdown生成博客工具
+  ```
+
+- 设置开机启动
+
+  ```sh
+  sudo systemctl enable anydesk
+  sudo systemctl enable todeskd
+  ```
+
+<!-- - 配置扬声器
 - 配置麦克风
-- 配置摄像头
-
-- 配置任务栏硬件监控 参考虚拟机
+- 配置摄像头 -->
 
 <!-- - 调节 CPU 频率
 
