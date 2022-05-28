@@ -698,7 +698,7 @@ tags:
   yay -S anydesk-bin # 远程工具
   yay -S todesk-bin # 远程工具
   yay -S wps-office wps-office-mui-zh-cn ttf-wps-fonts # WPS 办公工具
-  yay -S dropbox # 同步盘
+  yay -S dropbox thunar-dropbox # 同步盘
   yay -S multiload-ng-common xfce4-multiload-ng-plugin # 任务栏硬件监控工具
   yay -S hugo # markdown生成博客工具
   ```
@@ -710,9 +710,21 @@ tags:
   sudo systemctl enable todeskd
   ```
 
-<!-- - 配置扬声器
+- 阻止 dropbox 自动更新
+  ```sh
+  rm -rf ~/.dropbox-dist
+  install -dm0 ~/.dropbox-dist
+  ```
+
+<!--
+- 配置扬声器
 - 配置麦克风
-- 配置摄像头 -->
+- 配置摄像头
+- 装qq
+- 装微信
+- 改主题
+- 自动切换主题
+-->
 
 <!-- - 调节 CPU 频率
 
