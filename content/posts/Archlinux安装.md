@@ -497,10 +497,9 @@ tags:
   nano /usr/lib/systemd/system/lightdm.service
   ```
 
-  追加以下内容
+  在[Service]下一行，追加以下内容
 
   ```
-  [Service]
   Environment=LANG=zh_CN.UTF-8
   ```
 
@@ -705,6 +704,7 @@ tags:
   yay -S dropbox thunar-dropbox # 同步盘
   yay -S multiload-ng-common xfce4-multiload-ng-plugin # 任务栏硬件监控工具
   yay -S hugo # markdown生成博客工具
+  yay -S variety # 切换壁纸工具
   ```
 
 - 设置开机启动
@@ -721,6 +721,7 @@ tags:
   ```
 
 <!--
+- 开启samba协议，访问nas
 - 配置任务栏
 - 配置工作区
 - 配置扬声器
@@ -730,6 +731,7 @@ tags:
 - 装微信
 - 改主题
 - 自动切换主题
+- 设置快捷键
 -->
 
 <!-- - 调节 CPU 频率
