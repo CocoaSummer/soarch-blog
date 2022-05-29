@@ -1,7 +1,7 @@
 ---
 title: 'Archlinux安装'
 date: 2022-05-25T12:31:48+08:00
-lastmod: 2022-05-25T12:31:48+08:00
+lastmod: 2022-05-29T12:31:48+08:00
 draft: false
 cover: https://oss.soarch.top/archlinux.jpg
 categories:
@@ -391,6 +391,34 @@ tags:
   pacman -S yay
   ```
 
+### 调节 CPU 频率(可选)
+
+- 安装工具
+
+  ```sh
+  pacman -S thermald i7z cpupower
+  ```
+
+- 开机启动 cpupower
+
+  ```sh
+  systemctl enable cpupower.service
+  ```
+
+- 查看所有可用的模块
+
+  ```sh
+  ls /usr/lib/modules/$(uname -r)/kernel/drivers/cpufreq/
+  ```
+
+  (未验证)加载合适的模块。一旦合适的 cpufreq 驱动模块被加载成功
+
+- 查询到 CPU 的信息
+
+  ```sh
+  cpupower frequency-info
+  ```
+
 ### 安装图形依赖
 
 - 安装图形服务器
@@ -684,28 +712,27 @@ tags:
   source ~/.bashrc
   ```
 
-## 安装常用软件
+### 安装常用软件
 
-- 安装软件
-
-  ```sh
-  yay -S firefox firefox-i18n-zh-cn # 火狐浏览器
-  yay -S google-chrome # 谷歌浏览器
-  yay -S leafpad # 纯文本编辑器
-  yay -S mlocate # 建立文件索引工具
-  yay -S github-cli # github授权工具
-  yay -S vlc # vlc视频播放器
-  yay -S visual-studio-code-bin # vscode高级编辑器
-  yay -S unzip # 解压zip工具
-  yay -S cherrytree # 笔记工具
-  yay -S anydesk-bin # 远程工具
-  yay -S todesk-bin # 远程工具
-  yay -S wps-office wps-office-mui-zh-cn ttf-wps-fonts # WPS 办公工具
-  yay -S dropbox thunar-dropbox # 同步盘
-  yay -S multiload-ng-common xfce4-multiload-ng-plugin # 任务栏硬件监控工具
-  yay -S hugo # markdown生成博客工具
-  yay -S variety # 切换壁纸工具
-  ```
+```sh
+yay -S firefox firefox-i18n-zh-cn # 火狐浏览器
+yay -S google-chrome # 谷歌浏览器
+yay -S mlocate # 建立文件索引工具
+yay -S github-cli # github授权工具
+yay -S vlc # vlc视频播放器
+yay -S visual-studio-code-bin # vscode高级编辑器
+yay -S unzip # 解压zip工具
+yay -S cherrytree # 笔记工具
+yay -S anydesk-bin # 远程工具
+yay -S todesk-bin # 远程工具
+yay -S wps-office wps-office-mui-zh-cn ttf-wps-fonts # WPS 办公工具
+yay -S dropbox thunar-dropbox # 同步盘
+yay -S multiload-ng-common xfce4-multiload-ng-plugin # 任务栏硬件监控工具
+yay -S hugo # markdown生成博客工具
+yay -S variety # 自动下载与切换壁纸工具
+yay -S cifs-utils gvfs-smb # samba协议客户端
+yay -S redshift # 护眼模式工具
+```
 
 - 设置开机启动
 
@@ -715,47 +742,73 @@ tags:
   ```
 
 - 阻止 dropbox 自动更新
+
   ```sh
   rm -rf ~/.dropbox-dist
   install -dm0 ~/.dropbox-dist
   ```
 
-<!--
-- 开启samba协议，访问nas
+### 配置显示器夜间护眼模式
+
+- 创建并写入 redshift 配置文件
+
+  ```sh
+  nano ~/.config/redshift.conf
+  ```
+
+  填入内容
+
+  ```
+  [redshift]
+  temp-day=6500
+  temp-night=3500
+  transition=1
+  location-provider=manual
+
+  [manual]
+  lat=29.5689
+  lon=106.5577
+  ```
+
+  保存：Ctrl+X，输入 Y，回车
+
+- 查看当前经纬度的昼夜状态
+
+  ```sh
+  timeout 1 redshift -v |head
+  ```
+
+- 设置开机启动
+
+  ```sh
+  cp /usr/share/applications/redshift-gtk.desktop ~/.config/autostart/
+  ```
+
+## 后续设置(鼠标操作)
+
+- 配置自动下载并切换壁纸(variety)
+- 设置电源超时关闭显示器
+- 设置显示器超时显示屏保
 - 配置任务栏
-- 配置工作区
+
+  - 任务栏置底
+  - 面板顺序
+  - 网络监控(netload)
+  - 硬件监控(multiload-ng)
+  - 显示桌面
+  - 修改时间格式
+  - 删除多余工作区，仅保留一个
+  - 多显示器新增面板
+  - 窗口仅显示在当前显示器
+  - 窗口仅显示图标
+  - 修改应用菜单(whisker)
+  - 修改应用菜单图标
+  - 设置快捷键 Win 唤醒应用菜单
+  - 修改输入法切换快捷键为左 Shift
+
+- 装 qq
+- 装微信
+
 - 配置扬声器
 - 配置麦克风
 - 配置摄像头
-- 装qq
-- 装微信
-- 改主题
-- 自动切换主题
-- 设置快捷键
--->
-
-<!-- - 调节 CPU 频率
-
-安装工具
-
-```sh
-pacman -S thermald i7z cpupower
-```
-
-开机启动 cpupower
-
-```sh
-systemctl enable cpupower.service
-```
-
-查看所有可用的模块
-
-```sh
-ls /usr/lib/modules/$(uname -r)/kernel/drivers/cpufreq/
-```
-
-加载合适的模块。一旦合适的 cpufreq 驱动模块被加载成功，就可以通过以下命令查询到 CPU 的信息
-
-```sh
-cpupower frequency-info
-``` -->
