@@ -784,6 +784,22 @@ yay -S redshift # 护眼模式工具
   cp /usr/share/applications/redshift-gtk.desktop ~/.config/autostart/
   ```
 
+### 安装腾讯 IM(不稳定)
+
+经常会变化方案，将就用一下
+
+- 安装 QQ
+
+  ```sh
+  yay -S linuxqq
+  ```
+
+- 安装微信
+
+  ```sh
+  yay -S wechat-uos scrot
+  ```
+
 ## 后续设置(鼠标操作)
 
 - 配置自动下载并切换壁纸(variety)
@@ -805,9 +821,6 @@ yay -S redshift # 护眼模式工具
   - 修改应用菜单图标
   - 设置快捷键 Win 唤醒应用菜单
   - 修改输入法切换快捷键为左 Shift
-
-- 装 qq
-- 装微信
 
 - 配置扬声器
 - 配置麦克风
