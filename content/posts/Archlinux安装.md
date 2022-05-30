@@ -674,19 +674,82 @@ tags:
 
   保存：Ctrl+X，输入 Y，回车
 
-- 安装小狼毫输入法
+- 安装 rime 输入法
 
   ```sh
   yay -S fcitx5-rime
   ```
 
-- 安装常用中文词库
+- 注销当前用户，重新登录即可生效
+
+### 导入中文词库
+
+- 安装中文词库和中文输入方案
 
   ```sh
-  yay -S fcitx5-pinyin-zhwiki fcitx5-pinyin-sougou fcitx5-pinyin-zhwiki-rime fcitx5-pinyin-moegirl-rime
+  yay -S fcitx5-pinyin-zhwiki-rime fcitx5-pinyin-moegirl-rime rime-cloverpinyin
   ```
 
-- 注销当前用户，重新登录即可生效
+- 导入自定义词库
+
+  创建并写入 default.custom.yaml
+
+  ```sh
+  nano ~/.local/share/fcitx5/rime/default.custom.yaml
+  ```
+
+  填入内容
+
+  ```yaml
+  patch:
+    'menu/page_size': 8
+  schema_list:
+    - schema: clover
+  ```
+
+  保存：Ctrl+X，输入 Y，回车
+
+  创建并写入 clover.custom.yaml
+
+  ```sh
+  nano ~/.local/share/fcitx5/rime/clover.custom.yaml
+  ```
+
+  填入内容
+
+  ```yaml
+  patch:
+    'translator/dictionary': pinyin_extended
+  ```
+
+  保存：Ctrl+X，输入 Y，回车
+
+  创建并写入 pinyin_extended.dict.yaml
+
+  ```sh
+  nano ~/.local/share/fcitx5/rime/pinyin_extended.dict.yaml
+  ```
+
+  填入内容
+
+  ```yaml
+  ---
+  name: pinyin_extended
+  version: '1.0'
+  sort: by_weight
+  use_preset_vocabulary: false
+  import_tables:
+    - clover
+    - clover.base
+    - clover.phrase
+    - sogou_new_words
+    - moegirl
+    - zhwiki
+  ```
+
+  保存：Ctrl+X，输入 Y，回车
+
+- 鼠标右键单击桌面的 rime 输入法图标，选择“重新部署”即可生效
 
 ### 控制台优化
 
@@ -714,25 +777,27 @@ tags:
 
 ### 安装常用软件
 
-```sh
-yay -S firefox firefox-i18n-zh-cn # 火狐浏览器
-yay -S google-chrome # 谷歌浏览器
-yay -S mlocate # 建立文件索引工具
-yay -S github-cli # github授权工具
-yay -S vlc # vlc视频播放器
-yay -S visual-studio-code-bin # vscode高级编辑器
-yay -S unzip # 解压zip工具
-yay -S cherrytree # 笔记工具
-yay -S anydesk-bin # 远程工具
-yay -S todesk-bin # 远程工具
-yay -S wps-office wps-office-mui-zh-cn ttf-wps-fonts # WPS 办公工具
-yay -S dropbox thunar-dropbox # 同步盘
-yay -S multiload-ng-common xfce4-multiload-ng-plugin # 任务栏硬件监控工具
-yay -S hugo # markdown生成博客工具
-yay -S variety # 自动下载与切换壁纸工具
-yay -S cifs-utils gvfs-smb # samba协议客户端
-yay -S redshift # 护眼模式工具
-```
+- 安装软件
+
+  ```sh
+  yay -S firefox firefox-i18n-zh-cn # 火狐浏览器
+  yay -S google-chrome # 谷歌浏览器
+  yay -S mlocate # 建立文件索引工具
+  yay -S github-cli # github授权工具
+  yay -S vlc # vlc视频播放器
+  yay -S visual-studio-code-bin # vscode高级编辑器
+  yay -S unzip # 解压zip工具
+  yay -S cherrytree # 笔记工具
+  yay -S anydesk-bin # 远程工具
+  yay -S todesk-bin # 远程工具
+  yay -S wps-office wps-office-mui-zh-cn ttf-wps-fonts # WPS 办公工具
+  yay -S dropbox thunar-dropbox # 同步盘
+  yay -S multiload-ng-common xfce4-multiload-ng-plugin # 任务栏硬件监控工具
+  yay -S hugo # markdown生成博客工具
+  yay -S variety # 自动下载与切换壁纸工具
+  yay -S cifs-utils gvfs-smb # samba协议客户端
+  yay -S redshift # 护眼模式工具
+  ```
 
 - 设置开机启动
 
@@ -821,7 +886,3 @@ yay -S redshift # 护眼模式工具
   - 修改应用菜单图标
   - 设置快捷键 Win 唤醒应用菜单
   - 修改输入法切换快捷键为左 Shift
-
-- 配置扬声器
-- 配置麦克风
-- 配置摄像头
