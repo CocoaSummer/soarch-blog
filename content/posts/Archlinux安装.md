@@ -797,6 +797,7 @@ tags:
   yay -S variety # 自动下载与切换壁纸工具
   yay -S cifs-utils gvfs-smb # samba协议客户端
   yay -S redshift # 护眼模式工具
+  yay -S lshw # 硬件查询工具
   ```
 
 - 设置开机启动
