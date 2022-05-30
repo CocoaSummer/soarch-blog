@@ -885,3 +885,12 @@ tags:
   - 修改应用菜单图标
   - 设置快捷键 Win 唤醒应用菜单
   - 修改输入法切换快捷键为左 Shift
+
+  - 双系统时间问题(让 windows 使用 UTC 时间)
+    - 关闭自动更新时间和时区
+    - 打开注册表
+      ```
+      HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation\
+      ```
+    - 新建十六进制 DWORD 值：RealTimeIsUniversal，并设置值为 1
+    - 重启即可生效
