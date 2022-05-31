@@ -439,7 +439,7 @@ tags:
   pacman -S xfce4 xfce4-goodies
   ```
 
-### 配置显卡
+### 配置 NVIDIA 显卡
 
 - 安装驱动
 
@@ -447,7 +447,7 @@ tags:
 
   ```sh
   su soarch
-  yay -S nvidia-470xx-dkms
+  yay -S nvidia-470xx-dkms nvidia-settings
   exit
   ```
 
@@ -463,15 +463,69 @@ tags:
   nvidia-xconfig
   ```
 
-### 配置 lightdm
+### 配置多显卡
 
-- 安装 xrandr
+仅使用 NVIDIA 显卡
+
+- 安装屏幕配置工具 xrandr
 
   ```sh
   pacman -S xorg-xrandr
   ```
 
-- 安装 numlockx
+- 创建并写入/etc/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf
+
+  ```sh
+  nano /etc/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf
+  ```
+
+  填入内容
+
+  ```
+  Section "OutputClass"
+    Identifier "aspeed"
+    MatchDriver "ast"
+    Driver "modesetting"
+  EndSection
+
+  Section "OutputClass"
+    Identifier "nvidia"
+    MatchDriver "nvidia-drm"
+    Driver "nvidia"
+    Option "AllowEmptyInitialConfiguration"
+    Option "PrimaryGPU" "yes"
+    ModulePath "/usr/lib/nvidia/xorg"
+    ModulePath "/usr/lib/xorg/modules"
+  EndSection
+  ```
+
+  保存：Ctrl+X，输入 Y，回车
+
+- 创建并写入 /etc/lightdm/display_setup.sh
+
+  ```sh
+  nano /etc/lightdm/display_setup.sh
+  ```
+
+  填入内容
+
+  ```sh
+  #!/bin/bash
+  xrandr --setprovideroutputsource modesetting NVIDIA-0
+  xrandr --auto
+  ```
+
+  保存：Ctrl+X，输入 Y，回车
+
+- display_setup.sh 追加可执行权限
+
+  ```sh
+  chmod +x /etc/lightdm/display_setup.sh
+  ```
+
+### 配置 lightdm
+
+- 安装数字键盘激活工具 numlockx
 
   ```sh
   pacman -S numlockx
@@ -498,20 +552,6 @@ tags:
      - 修改：greeter-setup-script=/usr/bin/numlockx on
 
   4. 保存：Ctrl+X，输入 Y，回车
-
-- 创建并写入 display_setup.sh
-
-  ```sh
-  #!/bin/bash
-  xrandr --setprovideroutputsource modesetting NVIDIA-0
-  xrandr --auto
-  ```
-
-- display_setup.sh 追加可执行权限
-
-  ```sh
-  chmod +x display_setup.sh
-  ```
 
 - 设置开机启动
 
