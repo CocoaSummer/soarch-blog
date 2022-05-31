@@ -782,7 +782,6 @@ tags:
   ```sh
   yay -S firefox firefox-i18n-zh-cn # 火狐浏览器
   yay -S google-chrome # 谷歌浏览器
-  yay -S mlocate # 建立文件索引工具
   yay -S github-cli # github授权工具
   yay -S vlc # vlc视频播放器
   yay -S visual-studio-code-bin # vscode高级编辑器
@@ -798,6 +797,11 @@ tags:
   yay -S cifs-utils gvfs-smb # samba协议客户端
   yay -S redshift # 护眼模式工具
   yay -S lshw # 硬件查询工具
+  yay -S mlocate # 建立文件索引工具
+  yay -S alsa-utils alsa-plugins pulseaudio pulseaudio-alsa pavucontrol # 声卡组件
+  yay -S gnome-sound-recorder # 录音机
+  yay -S obs-studio # 虚拟摄像头
+  yay -S cheese # 摄像头预览工具
   ```
 
 - 设置开机启动
@@ -866,6 +870,18 @@ tags:
   yay -S wechat-uos scrot
   ```
 
+### 解除默认静音
+
+ALSA 默认静音所有声道，必须手动解除
+
+- 使用 amixer 解除
+
+  ```sh
+  amixer sset Master unmute
+  amixer sset Speaker unmute
+  amixer sset Headphone unmute
+  ```
+
 ## 后续设置(鼠标操作)
 
 - 配置自动下载并切换壁纸(variety)
@@ -886,11 +902,16 @@ tags:
   - 设置快捷键 Win 唤醒应用菜单
   - 修改输入法切换快捷键为左 Shift
 
-  - 双系统时间问题(让 windows 使用 UTC 时间)
-    - 关闭自动更新时间和时区
-    - 打开注册表
-      ```
-      HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation\
-      ```
-    - 新建十六进制 DWORD 值：RealTimeIsUniversal，并设置值为 1
-    - 重启即可生效
+## 双系统时间问题
+
+让 windows 使用 UTC 时间
+
+- 关闭自动更新时间和时区
+
+- 打开注册表
+
+  ```
+  HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation\
+  ```
+
+- 新建十六进制 DWORD 值：RealTimeIsUniversal，并设置值为 1 - 重启即可生效
