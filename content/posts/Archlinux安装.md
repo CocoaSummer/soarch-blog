@@ -439,7 +439,7 @@ tags:
   pacman -S xfce4 xfce4-goodies
   ```
 
-### 配置 NVIDIA 显卡
+### NVIDIA 显卡
 
 - 安装驱动
 
@@ -463,7 +463,27 @@ tags:
   nvidia-xconfig
   ```
 
-### 配置多显卡
+### 视频硬件加速
+
+- 安装硬件加速依赖
+
+  ```sh
+  pacman -S libva-vdpau-driver libva-utils vdpauinfo
+  ```
+
+- 验证 VA-API
+
+  ```sh
+  vainfo
+  ```
+
+- 验证 VDPAU
+
+  ```sh
+  vdpauinfo
+  ```
+
+### 双显卡
 
 仅使用 NVIDIA 显卡
 
