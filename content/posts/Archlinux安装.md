@@ -22,7 +22,7 @@ tags:
 - 硬盘分区表含有 ESP 分区(EFI)
 - 硬盘删除分区，保持“空闲”状态
 
-## 检查互联网是否连接
+## 检查互联网
 
 - 确保系统已经启用了网络接口
 
@@ -878,7 +878,7 @@ tags:
   install -dm0 ~/.dropbox-dist
   ```
 
-### 配置显示器夜间护眼模式
+### 配置护眼模式
 
 - 创建并写入 redshift 配置文件
 
@@ -914,7 +914,7 @@ tags:
   cp /usr/share/applications/redshift-gtk.desktop ~/.config/autostart/
   ```
 
-### 安装腾讯 IM(不稳定)
+### 安装腾讯 IM
 
 经常会变化方案，将就用一下
 
@@ -942,7 +942,9 @@ ALSA 默认静音所有声道，必须手动解除
   amixer sset Headphone unmute
   ```
 
-## 后续设置(鼠标操作)
+## 后续配置
+
+使用鼠标操作，根据个人习惯定制
 
 - 配置自动下载并切换壁纸(variety)
 - 设置电源超时关闭显示器
@@ -974,4 +976,5 @@ ALSA 默认静音所有声道，必须手动解除
   HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation\
   ```
 
-- 新建十六进制 DWORD 值：RealTimeIsUniversal，并设置值为 1 - 重启即可生效
+- 新建十六进制 DWORD 值：RealTimeIsUniversal，并设置值为 1
+- 重启即可生效
