@@ -1,7 +1,7 @@
 ---
 title: 'Archlinux安装'
 date: 2022-05-25T12:31:48+08:00
-lastmod: 2022-05-29T12:31:48+08:00
+lastmod: 2022-06-03T12:31:48+08:00
 draft: false
 cover: https://oss.soarch.top/archlinux.jpg
 categories:
