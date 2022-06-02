@@ -842,10 +842,10 @@ tags:
   ```sh
   yay -S firefox firefox-i18n-zh-cn # 火狐浏览器
   yay -S google-chrome # 谷歌浏览器
-  yay -S github-cli # github授权工具
   yay -S vlc # vlc视频播放器
   yay -S visual-studio-code-bin # vscode高级编辑器
-  yay -S unzip # 解压zip工具
+  yay -S unzip # 解压zip命令行工具
+  yay -S zip # 压缩zip命令行工具
   yay -S cherrytree # 笔记工具
   yay -S anydesk-bin # 远程工具
   yay -S todesk-bin # 远程工具
@@ -942,7 +942,7 @@ ALSA 默认静音所有声道，必须手动解除
   amixer sset Headphone unmute
   ```
 
-## 后续配置
+## 定制系统配置
 
 使用鼠标操作，根据个人习惯定制
 
@@ -978,3 +978,62 @@ ALSA 默认静音所有声道，必须手动解除
 
 - 新建十六进制 DWORD 值：RealTimeIsUniversal，并设置值为 1
 - 重启即可生效
+
+## 开发环境配置
+
+- 安装开发所需工具
+
+  ```sh
+  yay -S github-cli # github授权工具
+  yay -S git-lfs # git LFS 命令工具
+  yay -S nvm # node版本切换管理工具
+  ```
+
+### Node
+
+- 配置 nvm 命令
+
+  ```sh
+  nano ~/.bashrc
+  ```
+
+  追加内容
+
+  ```
+  export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  ```
+
+  保存：Ctrl+X，输入 Y，回车
+
+  立即生效
+
+  ```sh
+  source ~/.bashrc
+  ```
+
+- 安装 node 并使用
+  ```sh
+  nvm install 16
+  nvm use 16
+  ```
+- 配置 NPM 全局安装到用户级别
+
+  ```sh
+  nano ~/.bashrc
+  ```
+
+  追加内容
+
+  ```
+  PATH="$HOME/.node_modules/bin:$PATH"
+  export npm_config_prefix=~/.node_modules
+  ```
+
+  保存：Ctrl+X，输入 Y，回车
+
+  立即生效
+
+  ```sh
+  source ~/.bashrc
+  ```
