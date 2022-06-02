@@ -391,7 +391,9 @@ tags:
   pacman -S yay
   ```
 
-### 调节 CPU 频率(可选)
+### 调节 CPU 频率
+
+可选
 
 - 安装工具
 
@@ -543,7 +545,7 @@ tags:
   chmod +x /etc/lightdm/display_setup.sh
   ```
 
-### 配置 lightdm
+### 配置显示管理器
 
 - 安装数字键盘激活工具 numlockx
 
