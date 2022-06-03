@@ -100,6 +100,7 @@ tags:
   ```
 
 - 挂载 ESP 分区(EFI)
+
   ```sh
   mount /dev/sda1 /mnt/boot
   ```
@@ -840,9 +841,11 @@ tags:
 ### 同步盘
 
 - 安装 dropbox
+
   ```sh
   yay -S dropbox thunar-dropbox
   ```
+
 - 阻止 dropbox 自动更新
 
   ```sh
@@ -962,6 +965,8 @@ yay -S alsa-utils alsa-plugins pulseaudio pulseaudio-alsa pavucontrol # 声卡�
 yay -S gnome-sound-recorder # 录音机
 yay -S obs-studio # 虚拟摄像头
 yay -S cheese # 摄像头预览工具
+# 邮箱客户端
+ yay -S thunderbird thunderbird-i18n-zh-cn birdtray
 ```
 
 ## 定制系统配置
@@ -1047,6 +1052,7 @@ yay -S cheese # 摄像头预览工具
   ```
 
 - 检查当前使用版本
+
   ```sh
   node -v
   ```
