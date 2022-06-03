@@ -709,6 +709,30 @@ tags:
 
   重启后生效
 
+### 控制台优化
+
+- ls 命令设置别名
+
+  ```sh
+  sudo nano ~/.bashrc
+  ```
+
+  追加内容
+
+  ```
+  alias ll="ls -l"
+  alias la="ls -a"
+  alias lla="ls -al"
+  ```
+
+  保存：Ctrl+X，输入 Y，回车
+
+  立即生效
+
+  ```sh
+  source ~/.bashrc
+  ```
+
 ### 中文输入法
 
 - 安装输入法引擎
@@ -813,57 +837,26 @@ tags:
 
 - 鼠标右键单击桌面的 rime 输入法图标，选择“重新部署”即可生效
 
-### 控制台优化
+### 同步盘
 
-- ls 命令设置别名
+- 安装 dropbox
+  ```sh
+  yay -S dropbox thunar-dropbox
+  ```
+- 阻止 dropbox 自动更新
 
   ```sh
-  sudo nano ~/.bashrc
+  rm -rf ~/.dropbox-dist
+  install -dm0 ~/.dropbox-dist
   ```
 
-  追加内容
+### 远程控制
 
-  ```
-  alias ll="ls -l"
-  alias la="ls -a"
-  alias lla="ls -al"
-  ```
-
-  保存：Ctrl+X，输入 Y，回车
-
-  立即生效
+- 安装远程工具
 
   ```sh
-  source ~/.bashrc
-  ```
-
-### 安装常用软件
-
-- 安装软件
-
-  ```sh
-  yay -S firefox firefox-i18n-zh-cn # 火狐浏览器
-  yay -S google-chrome # 谷歌浏览器
-  yay -S vlc # vlc视频播放器
-  yay -S visual-studio-code-bin # vscode高级编辑器
-  yay -S unzip # 解压zip命令行工具
-  yay -S zip # 压缩zip命令行工具
-  yay -S cherrytree # 笔记工具
-  yay -S anydesk-bin # 远程工具
-  yay -S todesk-bin # 远程工具
-  yay -S wps-office wps-office-mui-zh-cn ttf-wps-fonts # WPS 办公工具
-  yay -S dropbox thunar-dropbox # 同步盘
-  yay -S multiload-ng-common xfce4-multiload-ng-plugin # 任务栏硬件监控工具
-  yay -S hugo # markdown生成博客工具
-  yay -S variety # 自动下载与切换壁纸工具
-  yay -S cifs-utils gvfs-smb # samba协议客户端
-  yay -S redshift # 护眼模式工具
-  yay -S lshw # 硬件查询工具
-  yay -S mlocate # 建立文件索引工具
-  yay -S alsa-utils alsa-plugins pulseaudio pulseaudio-alsa pavucontrol # 声卡组件
-  yay -S gnome-sound-recorder # 录音机
-  yay -S obs-studio # 虚拟摄像头
-  yay -S cheese # 摄像头预览工具
+  yay -S anydesk-bin
+  yay -S todesk-bin
   ```
 
 - 设置开机启动
@@ -873,14 +866,13 @@ tags:
   sudo systemctl enable todeskd
   ```
 
-- 阻止 dropbox 自动更新
+### 护眼模式
+
+- 安装软件
 
   ```sh
-  rm -rf ~/.dropbox-dist
-  install -dm0 ~/.dropbox-dist
+  yay -S redshift
   ```
-
-### 配置护眼模式
 
 - 创建并写入 redshift 配置文件
 
@@ -916,33 +908,61 @@ tags:
   cp /usr/share/applications/redshift-gtk.desktop ~/.config/autostart/
   ```
 
-### 安装腾讯 IM
+### 显示农历
 
-经常会变化方案，将就用一下
-
-- 安装 QQ
+- 安装农历
 
   ```sh
-  yay -S linuxqq
+  yay -S lunar-calendar
   ```
 
-- 安装微信
+- 编辑.xprofile
 
   ```sh
-  yay -S wechat-uos scrot
+  nano ~/.xprofile
   ```
 
-### 解除默认静音
+  追加内容
 
-ALSA 默认静音所有声道，必须手动解除
-
-- 使用 amixer 解除
-
-  ```sh
-  amixer sset Master unmute
-  amixer sset Speaker unmute
-  amixer sset Headphone unmute
   ```
+  export GTK3_MODULES=lunar-calendar-module
+  export GTK_MODULES=lunar-calendar-module
+  ```
+
+  保存：Ctrl+X，输入 Y，回车
+
+  注销后重新登录即可生效
+
+### 安装常用软件
+
+```sh
+# 生产力
+yay -S cherrytree # 笔记工具
+yay -S visual-studio-code-bin # vscode高级编辑器
+yay -S wps-office wps-office-mui-zh-cn ttf-wps-fonts # WPS 办公
+# 浏览器
+yay -S firefox firefox-i18n-zh-cn # 火狐浏览器
+yay -S google-chrome # 谷歌浏览器
+# 命令行工具
+yay -S hugo # markdown生成博客
+yay -S lshw # 硬件查询
+yay -S mlocate # 建立文件索引
+yay -S unzip # 解压zip
+yay -S zip # 压缩zip
+# 访问下载宝
+yay -S cifs-utils gvfs-smb # samba 客户端
+# 桌面美化
+yay -S multiload-ng-common xfce4-multiload-ng-plugin # 任务栏硬件监控工具
+yay -S variety # 自动下载与切换壁纸工具
+# 腾讯IM
+yay -S linuxqq # 腾讯QQ
+yay -S wechat-uos scrot # 腾讯微信
+# 多媒体
+yay -S alsa-utils alsa-plugins pulseaudio pulseaudio-alsa pavucontrol # 声卡组件
+yay -S gnome-sound-recorder # 录音机
+yay -S obs-studio # 虚拟摄像头
+yay -S cheese # 摄像头预览工具
+```
 
 ## 定制系统配置
 
@@ -988,10 +1008,15 @@ ALSA 默认静音所有声道，必须手动解除
   ```sh
   yay -S github-cli # github授权工具
   yay -S git-lfs # git LFS 命令工具
-  yay -S nvm # node版本切换管理工具
   ```
 
 ### Node
+
+- 安装 nvm 命令
+
+  ```sh
+  yay -S nvm # node版本切换管理工具
+  ```
 
 - 配置 nvm 命令
 
@@ -1015,27 +1040,13 @@ ALSA 默认静音所有声道，必须手动解除
   ```
 
 - 安装 node 并使用
+
   ```sh
   nvm install 16
   nvm use 16
   ```
-- 配置 NPM 全局安装到用户级别
 
+- 检查当前使用版本
   ```sh
-  nano ~/.bashrc
-  ```
-
-  追加内容
-
-  ```
-  PATH="$HOME/.node_modules/bin:$PATH"
-  export npm_config_prefix=~/.node_modules
-  ```
-
-  保存：Ctrl+X，输入 Y，回车
-
-  立即生效
-
-  ```sh
-  source ~/.bashrc
+  node -v
   ```
