@@ -966,7 +966,9 @@ yay -S gnome-sound-recorder # 录音机
 yay -S obs-studio # 虚拟摄像头
 yay -S cheese # 摄像头预览工具
 # 邮箱客户端
- yay -S thunderbird thunderbird-i18n-zh-cn birdtray
+yay -S thunderbird thunderbird-i18n-zh-cn birdtray
+# 下载工具
+yay -S xunlei-bin # 迅雷
 ```
 
 ## 定制系统配置
