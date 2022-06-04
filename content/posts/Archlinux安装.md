@@ -943,6 +943,7 @@ tags:
 yay -S cherrytree # 笔记工具
 yay -S visual-studio-code-bin # vscode高级编辑器
 yay -S wps-office wps-office-mui-zh-cn ttf-wps-fonts # WPS 办公
+yay -S wechat-devtools # 微信开发工具
 # 浏览器
 yay -S firefox firefox-i18n-zh-cn # 火狐浏览器
 yay -S google-chrome # 谷歌浏览器
