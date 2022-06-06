@@ -1059,3 +1059,11 @@ yay -S xunlei-bin # 迅雷
   ```sh
   node -v
   ```
+
+Electron
+
+- 安装 electron-builder 打包所需依赖
+
+  ```sh
+  yay -S libxcrypt-compat
+  ```
