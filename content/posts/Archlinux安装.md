@@ -944,6 +944,11 @@ yay -S cherrytree # 笔记工具
 yay -S visual-studio-code-bin # vscode高级编辑器
 yay -S wps-office wps-office-mui-zh-cn ttf-wps-fonts # WPS 办公
 yay -S wechat-devtools # 微信开发工具
+# 多媒体(开发所需)
+yay -S alsa-utils alsa-plugins pulseaudio pulseaudio-alsa pavucontrol # 声卡组件
+yay -S gnome-sound-recorder # 录音机
+yay -S obs-studio sndio luajit v4l2loopback-dkms # 虚拟摄像头
+yay -S cheese # 摄像头预览工具
 # 浏览器
 yay -S firefox firefox-i18n-zh-cn # 火狐浏览器
 yay -S google-chrome # 谷歌浏览器
@@ -953,23 +958,16 @@ yay -S lshw # 硬件查询
 yay -S mlocate # 建立文件索引
 yay -S unzip # 解压zip
 yay -S zip # 压缩zip
-# 访问下载宝
-yay -S cifs-utils gvfs-smb # samba 客户端
-# 桌面美化
-yay -S multiload-ng-common xfce4-multiload-ng-plugin # 任务栏硬件监控工具
-yay -S variety # 自动下载与切换壁纸工具
 # 腾讯IM
 yay -S linuxqq # 腾讯QQ
 yay -S wechat-uos scrot # 腾讯微信
-# 多媒体
-yay -S alsa-utils alsa-plugins pulseaudio pulseaudio-alsa pavucontrol # 声卡组件
-yay -S gnome-sound-recorder # 录音机
-yay -S obs-studio sndio luajit v4l2loopback-dkms # 虚拟摄像头
-yay -S cheese # 摄像头预览工具
-# 邮箱客户端
-yay -S thunderbird thunderbird-i18n-zh-cn birdtray
-# 下载工具
-yay -S xunlei-bin # 迅雷
+# 其他软件
+yay -S cifs-utils gvfs-smb # samba 客户端
+yay -S multiload-ng-common xfce4-multiload-ng-plugin # 任务栏硬件监控工具
+yay -S variety # 自动下载与切换壁纸工具
+yay -S thunderbird thunderbird-i18n-zh-cn birdtray # 邮箱客户端
+yay -S xunlei-bin # 迅雷下载
+yay -S file-roller # 归档管理器
 ```
 
 ## 定制系统配置
@@ -979,6 +977,7 @@ yay -S xunlei-bin # 迅雷
 - 配置自动下载并切换壁纸(variety)
 - 设置电源超时关闭显示器
 - 设置显示器超时显示屏保
+- 配置邮件通知(birdtray)
 - 配置任务栏
 
   - 任务栏置底
