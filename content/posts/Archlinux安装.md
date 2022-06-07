@@ -964,7 +964,7 @@ yay -S wechat-uos scrot # 腾讯微信
 # 多媒体
 yay -S alsa-utils alsa-plugins pulseaudio pulseaudio-alsa pavucontrol # 声卡组件
 yay -S gnome-sound-recorder # 录音机
-yay -S obs-studio # 虚拟摄像头
+yay -S obs-studio sndio luajit v4l2loopback-dkms # 虚拟摄像头
 yay -S cheese # 摄像头预览工具
 # 邮箱客户端
 yay -S thunderbird thunderbird-i18n-zh-cn birdtray
