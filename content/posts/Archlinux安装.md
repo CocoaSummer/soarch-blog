@@ -962,12 +962,13 @@ yay -S zip # 压缩zip
 yay -S linuxqq # 腾讯QQ
 yay -S wechat-uos scrot # 腾讯微信
 # 其他软件
-yay -S cifs-utils gvfs-smb # samba 客户端
 yay -S multiload-ng-common xfce4-multiload-ng-plugin # 任务栏硬件监控工具
-yay -S variety # 自动下载与切换壁纸工具
-yay -S thunderbird thunderbird-i18n-zh-cn birdtray # 邮箱客户端
 yay -S xunlei-bin # 迅雷下载
 yay -S file-roller # 归档管理器
+yay -S variety # 自动下载与切换壁纸工具
+yay -S thunderbird thunderbird-i18n-zh-cn birdtray # 邮箱客户端
+yay -S cifs-utils gvfs-smb # samba客户端
+yay -S filezilla # ftp/ftps/sftp客户端
 ```
 
 ## 定制系统配置
