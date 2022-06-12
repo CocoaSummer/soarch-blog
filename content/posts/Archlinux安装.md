@@ -969,6 +969,7 @@ yay -S variety # 自动下载与切换壁纸工具
 yay -S thunderbird thunderbird-i18n-zh-cn birdtray # 邮箱客户端
 yay -S cifs-utils gvfs-smb # samba客户端
 yay -S filezilla # ftp/ftps/sftp客户端
+yay -S galculator # 计算器
 ```
 
 ## 定制系统配置
@@ -1060,10 +1061,24 @@ yay -S filezilla # ftp/ftps/sftp客户端
   node -v
   ```
 
-Electron
+### Electron
 
 - 安装 electron-builder 打包所需依赖
 
   ```sh
   yay -S libxcrypt-compat
+  ```
+
+### Python
+
+- 安装 pip
+
+  ```sh
+  yay -S python-pip
+  ```
+
+- 安装 formater 和 linter
+
+  ```sh
+  sudo pip install black flake8
   ```
