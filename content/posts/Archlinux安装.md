@@ -1017,6 +1017,7 @@ yay -S galculator # 计算器
   ```sh
   yay -S github-cli # github授权工具
   yay -S git-lfs # git LFS 命令工具
+  yay -S docker # docker容器
   ```
 
 ### Node
