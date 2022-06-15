@@ -958,6 +958,7 @@ yay -S lshw # 硬件查询
 yay -S mlocate # 建立文件索引
 yay -S unzip # 解压zip
 yay -S zip # 压缩zip
+yay -S rar # 解压缩rar
 # 腾讯IM
 yay -S linuxqq # 腾讯QQ
 yay -S wechat-uos scrot # 腾讯微信
