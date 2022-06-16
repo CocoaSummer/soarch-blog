@@ -967,6 +967,7 @@ yay -S multiload-ng-common xfce4-multiload-ng-plugin # 任务栏硬件监控工�
 yay -S xunlei-bin # 迅雷下载
 yay -S file-roller # 归档管理器
 yay -S variety # 自动下载与切换壁纸工具
+yay -S archlinux-wallpaper # archlinux壁纸
 yay -S thunderbird thunderbird-i18n-zh-cn birdtray # 邮箱客户端
 yay -S cifs-utils gvfs-smb # samba客户端
 yay -S filezilla # ftp/ftps/sftp客户端
