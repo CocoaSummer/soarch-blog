@@ -959,6 +959,7 @@ yay -S mlocate # 建立文件索引
 yay -S unzip # 解压zip
 yay -S zip # 压缩zip
 yay -S rar # 解压缩rar
+yay -S neofetch # 查看系统信息
 # 腾讯IM
 yay -S linuxqq # 腾讯QQ
 yay -S wechat-uos scrot # 腾讯微信
@@ -966,8 +967,6 @@ yay -S wechat-uos scrot # 腾讯微信
 yay -S multiload-ng-common xfce4-multiload-ng-plugin # 任务栏硬件监控工具
 yay -S xunlei-bin # 迅雷下载
 yay -S file-roller # 归档管理器
-yay -S variety # 自动下载与切换壁纸工具
-yay -S archlinux-wallpaper # archlinux壁纸
 yay -S thunderbird thunderbird-i18n-zh-cn birdtray # 邮箱客户端
 yay -S cifs-utils gvfs-smb # samba客户端
 yay -S filezilla # ftp/ftps/sftp客户端
@@ -996,6 +995,18 @@ yay -S galculator # 计算器
   - 修改应用菜单图标
   - 设置快捷键 Win 唤醒应用菜单
   - 修改输入法切换快捷键为左 Shift
+
+## 美化桌面
+
+根据自己喜欢的随便弄弄
+
+```sh
+yay -S variety # 自动下载与切换壁纸工具
+yay -S ocs-url # 下载安装主题的工具
+yay -S archlinux-wallpaper # archlinux壁纸
+yay -S mcmojave-circle-icon-theme # 仿MacOS图标
+yay -S we10x-icon-theme-git # 仿win10图标
+```
 
 ## 双系统时间问题
 
