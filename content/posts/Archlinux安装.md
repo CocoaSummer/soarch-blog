@@ -227,7 +227,7 @@ tags:
   passwd
   ```
 
-- 安装生成引导的工具
+- 安装基础构建工具
 
   ```sh
   pacman -S grub efibootmgr networkmanager network-manager-applet dialog os-prober mtools dosfstools ntfs-3g base-devel linux-headers reflector git sudo wget
