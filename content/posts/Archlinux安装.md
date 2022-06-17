@@ -971,11 +971,15 @@ yay -S thunderbird thunderbird-i18n-zh-cn birdtray # 邮箱客户端
 yay -S cifs-utils gvfs-smb # samba客户端
 yay -S filezilla # ftp/ftps/sftp客户端
 yay -S galculator # 计算器
+yay -S flameshot # 截图工具
+yay -S vlc # 媒体播放器
 ```
 
 ## 定制系统配置
 
-使用鼠标操作，根据个人习惯定制
+根据个人习惯定制
+
+### 鼠标操作
 
 - 配置自动下载并切换壁纸(variety)
 - 设置电源超时关闭显示器
@@ -995,6 +999,33 @@ yay -S galculator # 计算器
   - 修改应用菜单图标
   - 设置快捷键 Win 唤醒应用菜单
   - 修改输入法切换快捷键为左 Shift
+
+### 精简系统自带软件
+
+```sh
+yay -Rscn xfce4-wavelan-plugin # xfce4面板的wifi连接插件
+yay -Rscn xfce4-weather-plugin # xfce4面板的天气插件
+yay -Rscn xfce4-notes-plugin # xfce4面板的便笺插件
+yay -Rscn xfce4-cpufreq-plugin # xfce4面板的CPU频率插件
+yay -Rscn xfce4-mailwatch-plugin # xfce4面板的邮件通知插件
+yay -Rscn xfce4-eyes-plugin # xfce4面板的眼睛插件
+yay -Rscn xfce4-datetime-plugin # xfce4面板的日期插件
+yay -Rscn xfce4-sensors-plugin # xfce4面板的传感器插件
+yay -Rscn xfce4-systemload-plugin # xfce4面板的系统负载监视器插件
+yay -Rscn xfce4-cpugraph-plugin # xfce4面板的CPU负载插件
+yay -Rscn xfce4-diskperf-plugin # xfce4面板的磁盘性能监视器插件
+yay -Rscn xfce4-netload-plugin # xfce4面板的网络监视器插件
+yay -Rscn xfce4-battery-plugin # xfce4面板的电池监视器插件
+yay -Rscn xfce4-mpc-plugin # xfce4面板的MPD客户端插件
+yay -Rscn xfce4-smartbookmark-plugin # xfce4面板的SmartBookmark智能书签插件
+yay -Rscn xfce4-time-out-plugin # xfce4面板的超时插件
+yay -Rscn xfce4-timer-plugin # xfce4面板的定时器插件
+yay -Rscn xfce4-verve-plugin # xfce4面板的Verve命令行插件
+yay -Rscn xfce4-screenshooter # 截图工具
+yay -Rscn parole # 媒体播放器
+yay -Rscn xfce4-dict # 词典
+yay -Rscn xfburn # 光盘刻录工具
+```
 
 ## 美化桌面
 
