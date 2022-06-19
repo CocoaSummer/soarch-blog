@@ -1,7 +1,7 @@
 ---
 title: 'Archlinux安装'
 date: 2022-05-25T12:31:48+08:00
-lastmod: 2022-06-03T12:31:48+08:00
+lastmod: 2022-06-19T12:31:48+08:00
 draft: false
 cover: https://oss.soarch.top/archlinux.jpg
 categories:
@@ -954,7 +954,6 @@ yay -S firefox firefox-i18n-zh-cn # 火狐浏览器
 yay -S google-chrome # 谷歌浏览器
 # 命令行工具
 yay -S hugo # markdown生成博客
-yay -S lshw # 硬件查询
 yay -S mlocate # 建立文件索引
 yay -S unzip # 解压zip
 yay -S zip # 压缩zip
@@ -1000,7 +999,7 @@ yay -S vlc # 媒体播放器
   - 设置快捷键 Win 唤醒应用菜单
   - 修改输入法切换快捷键为左 Shift
 
-### 精简系统自带软件
+### 精简自带组件
 
 ```sh
 yay -Rscn xfce4-wavelan-plugin # xfce4面板的wifi连接插件
@@ -1024,6 +1023,7 @@ yay -Rscn xfce4-genmon-plugin # xfce4面板的一般监视器
 yay -Rscn xfce4-fsguard-plugin # xfce4面板的剩余容量检查器
 yay -Rscn xfce4-mount-plugin # xfce4面板的挂载设备
 yay -Rscn xfce4-xkb-plugin # xfce4面板的键盘布局
+yay -Rscn xfce4-clipman-plugin # xfce4面板的剪切板管理器
 yay -Rscn xfce4-screenshooter # 截图工具
 yay -Rscn parole # 媒体播放器
 yay -Rscn xfce4-dict # 词典
