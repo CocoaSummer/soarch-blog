@@ -1014,13 +1014,16 @@ yay -Rscn xfce4-sensors-plugin # xfce4面板的传感器插件
 yay -Rscn xfce4-systemload-plugin # xfce4面板的系统负载监视器插件
 yay -Rscn xfce4-cpugraph-plugin # xfce4面板的CPU负载插件
 yay -Rscn xfce4-diskperf-plugin # xfce4面板的磁盘性能监视器插件
-yay -Rscn xfce4-netload-plugin # xfce4面板的网络监视器插件
 yay -Rscn xfce4-battery-plugin # xfce4面板的电池监视器插件
 yay -Rscn xfce4-mpc-plugin # xfce4面板的MPD客户端插件
 yay -Rscn xfce4-smartbookmark-plugin # xfce4面板的SmartBookmark智能书签插件
 yay -Rscn xfce4-time-out-plugin # xfce4面板的超时插件
 yay -Rscn xfce4-timer-plugin # xfce4面板的定时器插件
 yay -Rscn xfce4-verve-plugin # xfce4面板的Verve命令行插件
+yay -Rscn xfce4-genmon-plugin # xfce4面板的一般监视器
+yay -Rscn xfce4-fsguard-plugin # xfce4面板的剩余容量检查器
+yay -Rscn xfce4-mount-plugin # xfce4面板的挂载设备
+yay -Rscn xfce4-xkb-plugin # xfce4面板的键盘布局
 yay -Rscn xfce4-screenshooter # 截图工具
 yay -Rscn parole # 媒体播放器
 yay -Rscn xfce4-dict # 词典
