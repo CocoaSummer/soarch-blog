@@ -622,10 +622,20 @@ tags:
   pacman -S noto-fonts-cjk ttf-dejavu adobe-source-han-sans-cn-fonts adobe-source-han-serif-cn-fonts
   ```
 
-- 启用回收站
+- 启用自动挂载
 
   ```sh
-  pacman -S gvfs
+  pacman -S udisks2 gvfs # 启用自动挂载和回收站
+  pacman -S cifs-utils gvfs-smb # 自动挂载samba客户端
+  pacman -S gvfs-mtp # 自动挂载安卓移动设备、MTP媒体播放器、U盘、移动硬盘
+  pacman -S gvfs-afc # 自动挂载苹果移动设备
+  pacman -S gvfs-gphoto2 # 自动挂载数码相机、MTP媒体播放器
+  ```
+
+- 开机启动 udisks2
+
+  ```sh
+  systemctl enable udisks2
   ```
 
 - 登录普通用户，并进入用户目录
@@ -967,7 +977,6 @@ yay -S multiload-ng-common xfce4-multiload-ng-plugin # 任务栏硬件监控工�
 yay -S xunlei-bin # 迅雷下载
 yay -S file-roller # 归档管理器
 yay -S thunderbird thunderbird-i18n-zh-cn birdtray # 邮箱客户端
-yay -S cifs-utils gvfs-smb # samba客户端
 yay -S filezilla # ftp/ftps/sftp客户端
 yay -S galculator # 计算器
 yay -S flameshot # 截图工具
