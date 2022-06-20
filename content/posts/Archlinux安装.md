@@ -974,7 +974,7 @@ yay -S linuxqq # 腾讯QQ
 yay -S wechat-uos scrot # 腾讯微信
 # 图形处理
 yay -S gimp # 替代photoshop
-yay -S mtxx-bin # 美图秀秀
+yay -S qt5-webengine mtxx-bin # 美图秀秀
 # 其他软件
 yay -S multiload-ng-common xfce4-multiload-ng-plugin # 任务栏硬件监控工具
 yay -S xunlei-bin # 迅雷下载
