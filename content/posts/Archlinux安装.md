@@ -981,7 +981,7 @@ yay -S xunlei-bin # 迅雷下载
 yay -S file-roller # 归档管理器
 yay -S thunderbird thunderbird-i18n-zh-cn birdtray # 邮箱客户端
 yay -S filezilla # ftp/ftps/sftp客户端
-yay -S galculator # 计算器
+yay -S gnome-calculator # 计算器
 yay -S flameshot # 截图工具
 yay -S vlc # 媒体播放器
 ```
