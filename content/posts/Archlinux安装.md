@@ -954,11 +954,12 @@ yay -S cherrytree # 笔记工具
 yay -S visual-studio-code-bin # vscode高级编辑器
 yay -S wps-office wps-office-mui-zh-cn ttf-wps-fonts # WPS 办公
 yay -S wechat-devtools # 微信开发工具
-# 多媒体(开发所需)
+# 多媒体
 yay -S alsa-utils alsa-plugins pulseaudio pulseaudio-alsa pavucontrol # 声卡组件
 yay -S gnome-sound-recorder # 录音机
 yay -S obs-studio sndio luajit v4l2loopback-dkms # 虚拟摄像头
 yay -S cheese # 摄像头预览工具
+yay -S vlc # 媒体播放器
 # 浏览器
 yay -S firefox firefox-i18n-zh-cn # 火狐浏览器
 yay -S google-chrome # 谷歌浏览器
@@ -983,7 +984,6 @@ yay -S thunderbird thunderbird-i18n-zh-cn birdtray # 邮箱客户端
 yay -S filezilla # ftp/ftps/sftp客户端
 yay -S gnome-calculator # 计算器
 yay -S flameshot # 截图工具
-yay -S vlc # 媒体播放器
 ```
 
 ## 定制系统配置
