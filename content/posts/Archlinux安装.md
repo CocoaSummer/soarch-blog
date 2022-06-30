@@ -1051,7 +1051,6 @@ yay -S variety # 自动下载与切换壁纸工具
 yay -S ocs-url # 下载安装主题的工具
 yay -S archlinux-wallpaper # archlinux壁纸
 yay -S mcmojave-circle-icon-theme # 仿MacOS图标
-yay -S we10x-icon-theme-git # 仿win10图标
 ```
 
 ## 双系统时间问题
